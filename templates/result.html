@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Wynik generowania schodów
+{% endblock %}
+
+{% block content %}
+    <h1>Generowanie schodów zakończone sukcesem!</h1>
+    <p>Plik został utworzony i eksportowany do formatu WebGl.</p>
+    <p><a href="{{ url_for('views.home') }}">Powrót do strony głównej</a></p>
+{% endblock %}
