@@ -1,0 +1,7 @@
+www.schody3d.toadres.pl{
+    redir https://schody3d.toadres.pl{uri}
+}
+
+schody3d.toadres.pl {
+    reverse_proxy localhost:8000
+}
