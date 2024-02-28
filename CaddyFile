@@ -3,5 +3,5 @@ www.schody3d.toadres.pl{
 }
 
 schody3d.toadres.pl {
-    reverse_proxy [2a01:4f9:3070:13dc::117]:8000
+    reverse_proxy localhost:8000
 }
