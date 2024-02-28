@@ -1,4 +1,4 @@
-www.schody3d.toadres.pl{
+www.schody3d.toadres.pl {
     redir https://schody3d.toadres.pl{uri}
 }
 
