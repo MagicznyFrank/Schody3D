@@ -2603,3 +2603,107 @@ INFO:root:2024-03-01 14:49:13.993984 - Active document: feRCoP0tzRUianq - Stairs
 INFO:root:2024-03-01 14:49:14.009880 - Active document: feRCoP0tzRUianq - Export path: /home/magicfrank/FreeCadProject/feRCoP0tzRUianq.html
 INFO:root:2024-03-01 14:49:14.010003 - Active document: feRCoP0tzRUianq - Export objs: [<Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>]
 INFO:root:2024-03-01 14:49:14.128523 - Active document: feRCoP0tzRUianq - Exported to WebGL successfully: /home/magicfrank/FreeCadProject/feRCoP0tzRUianq.html
+INFO:root:2024-03-05 18:41:54.790564 - Active document: None - Received arguments: ['/home/magicfrank/Documents/freecad_appimage/squashfs-root/usr/bin/freecadcmd', '-c', 'FreeCadScripts/Schody_Proste.FCMacro', '2000.0', '500.0', '300.0', '180.0', '10']
+INFO:root:2024-03-05 18:41:54.791090 - Active document: None - Creating stairs with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-05 18:41:54.791166 - Active document: None - Generated document name: q4xH0RC19Q1mDlh
+INFO:root:2024-03-05 18:41:54.810360 - Current working directory: /home/magicfrank/Documents/pycharm_freecad_project
+INFO:root:2024-03-05 18:41:54.810560 - Active document: q4xH0RC19Q1mDlh - Stairs created successfully with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-05 18:41:54.830602 - Active document: q4xH0RC19Q1mDlh - Export path: /home/magicfrank/FreeCadProject/q4xH0RC19Q1mDlh.html
+INFO:root:2024-03-05 18:41:54.830733 - Active document: q4xH0RC19Q1mDlh - Export objs: [<Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>]
+INFO:root:2024-03-05 18:41:54.985346 - Active document: q4xH0RC19Q1mDlh - Exported to WebGL successfully: /home/magicfrank/FreeCadProject/q4xH0RC19Q1mDlh.html
+INFO:root:2024-03-05 19:16:50.903715 - Active document: None - Received arguments: ['/home/magicfrank/Documents/freecad_appimage/squashfs-root/usr/bin/freecadcmd', '-c', 'FreeCadScripts/Schody_Proste.FCMacro', '2000.0', '500.0', '300.0', '180.0', '10']
+INFO:root:2024-03-05 19:16:50.906870 - Active document: None - Creating stairs with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-05 19:16:50.907039 - Active document: None - Generated document name: 9QIlIoswqYfGNrn
+INFO:root:2024-03-05 19:16:50.965630 - Current working directory: /home/magicfrank/Documents/pycharm_freecad_project
+INFO:root:2024-03-05 19:16:50.965759 - Active document: 9QIlIoswqYfGNrn - Stairs created successfully with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+ERROR:root:2024-03-05 19:16:50.965892 - Active document: 9QIlIoswqYfGNrn - Error during script execution: local variable 'doc' referenced before assignment
+ERROR:root:Traceback (most recent call last):
+  File "FreeCadScripts/Schody_Proste.FCMacro", line 68, in export_to_webgl
+    doc = App.getDocument(doc_name)
+NameError: Unknown document '9QIlIoswqYfGNrn'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "FreeCadScripts/Schody_Proste.FCMacro", line 121, in get_stair_parameters
+    export_to_webgl(doc_name, num_steps)
+  File "FreeCadScripts/Schody_Proste.FCMacro", line 100, in export_to_webgl
+    datetime.now(), doc.Label if doc else 'None', str(e)))
+UnboundLocalError: local variable 'doc' referenced before assignment
+
+INFO:root:2024-03-05 19:17:19.441873 - Active document: None - Received arguments: ['/home/magicfrank/Documents/freecad_appimage/squashfs-root/usr/bin/freecadcmd', '-c', 'FreeCadScripts/Schody_Proste.FCMacro', '2000.0', '500.0', '300.0', '180.0', '10']
+INFO:root:2024-03-05 19:17:19.442300 - Active document: None - Creating stairs with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-05 19:17:19.442368 - Active document: None - Generated document name: j9cm8Ca2IajG6Qm
+INFO:root:2024-03-05 19:17:19.450864 - Current working directory: /home/magicfrank/Documents/pycharm_freecad_project
+INFO:root:2024-03-05 19:17:19.450997 - Active document: j9cm8Ca2IajG6Qm - Stairs created successfully with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-05 19:17:19.470544 - Active document: j9cm8Ca2IajG6Qm - Export path: /home/magicfrank/FreeCadProject/j9cm8Ca2IajG6Qm.html
+INFO:root:2024-03-05 19:17:19.470693 - Active document: j9cm8Ca2IajG6Qm - Export objs: [<Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>]
+INFO:root:2024-03-05 19:17:19.593528 - Active document: j9cm8Ca2IajG6Qm - Exported to WebGL successfully: /home/magicfrank/FreeCadProject/j9cm8Ca2IajG6Qm.html
+INFO:root:2024-03-05 19:21:24.971596 - Active document: None - Received arguments: ['/home/magicfrank/Documents/freecad_appimage/squashfs-root/usr/bin/freecadcmd', '-c', 'FreeCadScripts/Schody_Proste.FCMacro', '2000.0', '500.0', '300.0', '180.0', '10']
+INFO:root:2024-03-05 19:21:24.973156 - Active document: None - Creating stairs with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-05 19:21:24.973269 - Active document: None - Generated document name: Abc3uqgtnWFNGtu
+INFO:root:2024-03-05 19:21:24.995027 - Current working directory: /home/magicfrank/Documents/pycharm_freecad_project
+INFO:root:2024-03-05 19:21:24.995250 - Active document: Abc3uqgtnWFNGtu - Stairs created successfully with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-05 19:21:25.015560 - Active document: Abc3uqgtnWFNGtu - Export path: /home/magicfrank/FreeCadProject/Abc3uqgtnWFNGtu.html
+INFO:root:2024-03-05 19:21:25.015698 - Active document: Abc3uqgtnWFNGtu - Export objs: [<Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>]
+INFO:root:2024-03-05 19:21:25.135063 - Active document: Abc3uqgtnWFNGtu - Exported to WebGL successfully: /home/magicfrank/FreeCadProject/Abc3uqgtnWFNGtu.html
+INFO:root:2024-03-05 19:26:35.980160 - Active document: None - Received arguments: ['/home/magicfrank/Documents/freecad_appimage/squashfs-root/usr/bin/freecadcmd', '-c', 'FreeCadScripts/Schody_Proste.FCMacro', '2000.0', '500.0', '300.0', '180.0', '10']
+INFO:root:2024-03-05 19:26:35.980687 - Active document: None - Creating stairs with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-05 19:26:35.980784 - Active document: None - Generated document name: D64vUgXVPrcfn68
+INFO:root:2024-03-05 19:26:35.989683 - Current working directory: /home/magicfrank/Documents/pycharm_freecad_project
+INFO:root:2024-03-05 19:26:35.989827 - Active document: D64vUgXVPrcfn68 - Stairs created successfully with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-05 19:26:36.005481 - Active document: D64vUgXVPrcfn68 - Export path: /home/magicfrank/FreeCadProject/D64vUgXVPrcfn68.html
+INFO:root:2024-03-05 19:26:36.005649 - Active document: D64vUgXVPrcfn68 - Export objs: [<Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>]
+INFO:root:2024-03-05 19:26:36.109824 - Active document: D64vUgXVPrcfn68 - Exported to WebGL successfully: /home/magicfrank/FreeCadProject/D64vUgXVPrcfn68.html
+INFO:root:2024-03-06 20:43:36.520636 - Active document: None - Received arguments: ['/home/magicfrank/Documents/freecad_appimage/squashfs-root/usr/bin/freecadcmd', '-c', 'FreeCadScripts/Schody_Proste.FCMacro', '2000.0', '500.0', '300.0', '180.0', '10']
+INFO:root:2024-03-06 20:43:36.527504 - Active document: None - Creating stairs with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-06 20:43:36.527678 - Active document: None - Generated document name: NBW79jb66B7Ws1N
+INFO:root:2024-03-06 20:43:36.569256 - Current working directory: /home/magicfrank/Documents/pycharm_freecad_project
+INFO:root:2024-03-06 20:43:36.569501 - Active document: NBW79jb66B7Ws1N - Stairs created successfully with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-06 20:43:36.590964 - Active document: NBW79jb66B7Ws1N - Export path: /home/magicfrank/FreeCadProject/NBW79jb66B7Ws1N.html
+INFO:root:2024-03-06 20:43:36.591105 - Active document: NBW79jb66B7Ws1N - Export objs: [<Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>]
+INFO:root:2024-03-06 20:43:36.817048 - Active document: NBW79jb66B7Ws1N - Exported to WebGL successfully: /home/magicfrank/FreeCadProject/NBW79jb66B7Ws1N.html
+INFO:root:2024-03-06 20:45:50.946290 - Active document: None - Received arguments: ['/home/magicfrank/Documents/freecad_appimage/squashfs-root/usr/bin/freecadcmd', '-c', 'FreeCadScripts/Schody_Proste.FCMacro', '2000.0', '500.0', '300.0', '180.0', '10']
+INFO:root:2024-03-06 20:45:50.948617 - Active document: None - Creating stairs with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-06 20:45:50.948926 - Active document: None - Generated document name: VewhmWScwLNkOi0
+INFO:root:2024-03-06 20:45:50.958325 - Current working directory: /home/magicfrank/Documents/pycharm_freecad_project
+INFO:root:2024-03-06 20:45:50.958445 - Active document: VewhmWScwLNkOi0 - Stairs created successfully with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-06 20:45:50.977308 - Active document: VewhmWScwLNkOi0 - Export path: /home/magicfrank/FreeCadProject/VewhmWScwLNkOi0.html
+INFO:root:2024-03-06 20:45:50.977588 - Active document: VewhmWScwLNkOi0 - Export objs: [<Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>]
+INFO:root:2024-03-06 20:45:51.101908 - Active document: VewhmWScwLNkOi0 - Exported to WebGL successfully: /home/magicfrank/FreeCadProject/VewhmWScwLNkOi0.html
+INFO:root:2024-03-06 20:46:30.383130 - Active document: None - Received arguments: ['/home/magicfrank/Documents/freecad_appimage/squashfs-root/usr/bin/freecadcmd', '-c', 'FreeCadScripts/Schody_Proste.FCMacro', '2000.0', '500.0', '300.0', '180.0', '10']
+INFO:root:2024-03-06 20:46:30.383264 - Active document: None - Creating stairs with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-06 20:46:30.383344 - Active document: None - Generated document name: asm5xRXptPO4WiD
+INFO:root:2024-03-06 20:46:30.391254 - Current working directory: /home/magicfrank/Documents/pycharm_freecad_project
+INFO:root:2024-03-06 20:46:30.391435 - Active document: asm5xRXptPO4WiD - Stairs created successfully with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-06 20:46:30.408484 - Active document: asm5xRXptPO4WiD - Export path: /home/magicfrank/FreeCadProject/asm5xRXptPO4WiD.html
+INFO:root:2024-03-06 20:46:30.408609 - Active document: asm5xRXptPO4WiD - Export objs: [<Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>]
+INFO:root:2024-03-06 20:46:30.513767 - Active document: asm5xRXptPO4WiD - Exported to WebGL successfully: /home/magicfrank/FreeCadProject/asm5xRXptPO4WiD.html
+INFO:root:2024-03-06 20:58:46.759330 - Active document: None - Received arguments: ['/home/magicfrank/Documents/freecad_appimage/squashfs-root/usr/bin/freecadcmd', '-c', 'FreeCadScripts/Schody_Proste.FCMacro', '2000.0', '500.0', '300.0', '15.0', '10']
+INFO:root:2024-03-06 20:58:46.759466 - Active document: None - Creating stairs with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=15.0, num_steps=10.0
+INFO:root:2024-03-06 20:58:46.759551 - Active document: None - Generated document name: 9NsOJ3qevgWUKJo
+INFO:root:2024-03-06 20:58:46.767260 - Current working directory: /home/magicfrank/Documents/pycharm_freecad_project
+INFO:root:2024-03-06 20:58:46.767368 - Active document: 9NsOJ3qevgWUKJo - Stairs created successfully with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=15.0, num_steps=10.0
+ERROR:root:2024-03-06 20:58:46.767436 - Active document: 9NsOJ3qevgWUKJo - Error during script execution: local variable 'doc' referenced before assignment
+ERROR:root:Traceback (most recent call last):
+  File "FreeCadScripts/Schody_Proste.FCMacro", line 68, in export_to_webgl
+    doc = App.getDocument(doc_name)
+NameError: Unknown document '9NsOJ3qevgWUKJo'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "FreeCadScripts/Schody_Proste.FCMacro", line 121, in get_stair_parameters
+    export_to_webgl(doc_name, num_steps)
+  File "FreeCadScripts/Schody_Proste.FCMacro", line 100, in export_to_webgl
+    datetime.now(), doc.Label if doc else 'None', str(e)))
+UnboundLocalError: local variable 'doc' referenced before assignment
+
+INFO:root:2024-03-06 20:59:42.647936 - Active document: None - Received arguments: ['/home/magicfrank/Documents/freecad_appimage/squashfs-root/usr/bin/freecadcmd', '-c', 'FreeCadScripts/Schody_Proste.FCMacro', '2000.0', '500.0', '300.0', '180.0', '10']
+INFO:root:2024-03-06 20:59:42.648119 - Active document: None - Creating stairs with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-06 20:59:42.648247 - Active document: None - Generated document name: Zf5BLV8tZp2Dplf
+INFO:root:2024-03-06 20:59:42.657297 - Current working directory: /home/magicfrank/Documents/pycharm_freecad_project
+INFO:root:2024-03-06 20:59:42.657421 - Active document: Zf5BLV8tZp2Dplf - Stairs created successfully with parameters: length=2000.0, width=500.0, step_height=300.0, step_spacing=180.0, num_steps=10.0
+INFO:root:2024-03-06 20:59:42.673830 - Active document: Zf5BLV8tZp2Dplf - Export path: /home/magicfrank/FreeCadProject/Zf5BLV8tZp2Dplf.html
+INFO:root:2024-03-06 20:59:42.673970 - Active document: Zf5BLV8tZp2Dplf - Export objs: [<Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>, <Part::PartFeature>]
+INFO:root:2024-03-06 20:59:42.779885 - Active document: Zf5BLV8tZp2Dplf - Exported to WebGL successfully: /home/magicfrank/FreeCadProject/Zf5BLV8tZp2Dplf.html
