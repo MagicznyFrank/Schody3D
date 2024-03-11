@@ -1,3 +1,0 @@
-schody3d.toadres.pl {
-    reverse_proxy localhost:8000
-}
