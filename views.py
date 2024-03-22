@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request
 import subprocess
 import logging
-freecad_path = "/home/magicfrank/Documents/freecad_appimage/squashfs-root/usr/bin/freecadcmd"
+freecad_path = "/schody3d/FreeCadapp/freecad_appimage/squashfs-root/usr/bin/freecadcmd"
 
 views = Blueprint(__name__, "views")
 
