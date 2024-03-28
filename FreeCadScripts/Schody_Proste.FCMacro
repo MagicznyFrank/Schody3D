@@ -91,7 +91,7 @@ def export_to_webgl(doc_name, num_steps):
             logging.info("{} - Active document: {} - Exported to WebGL successfully: {}".format(
                 datetime.now(), doc.Label if doc else 'None', export_path))
 
-            webbrowser.open('file://' + os.path.realpath(export_path))
+            #webbrowser.open('file://' + os.path.realpath(export_path))
         else:
             logging.error("{} - Active document: None - Error during WebGL export: Document not found".format(
                 datetime.now()))
