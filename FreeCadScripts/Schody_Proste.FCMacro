@@ -11,7 +11,7 @@ import webbrowser
 
 
 # Konfiguracja loggera
-log_file_path = '/schody3d/Schody3Dfreecad.log'
+log_file_path = '/schody3d/Schody3D/freecad.log'
 logging.basicConfig(filename=log_file_path, level=logging.INFO)
 
 def generate_random_name(length=15):
