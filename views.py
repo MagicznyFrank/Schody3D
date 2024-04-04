@@ -13,6 +13,9 @@ views = Blueprint(__name__, "views")
 def home():
     return render_template("index.html")
 
+@views.route("/admin/")
+def admin():
+    return render_template("admin.html")
 
 @views.route('/create/', methods=['GET', 'POST'])
 def create():
