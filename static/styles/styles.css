@@ -206,3 +206,47 @@
     0% { transform: translate(-50%, -50%) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
+/* Dodatkowe style dla tabelki */
+table {
+    margin: 0 auto; /* Wyśrodkowanie tabelki */
+    border-collapse: collapse; /* Usunięcie odstępów między komórkami */
+    width: 80%; /* Szerokość tabelki */
+}
+
+th, td {
+    padding: 10px; /* Wypełnienie komórek */
+    border: 1px solid #d64161; /* Obramowanie komórek */
+    text-align: left; /* Wyrównanie tekstu do lewej */
+}
+
+th {
+    font-size: 1.2em; /* Większy tekst w nagłówkach */
+    background-color: #081423; /* Kolor tła nagłówków */
+    color: #ffffff; /* Kolor tekstu w nagłówkach */
+}
+
+tr:nth-child(even) {
+    background-color: #0c162e; /* Kolor tła co drugiego wiersza */
+}
+
+tr:hover {
+    background-color: #1a304e; /* Kolor tła podczas najechania myszką */
+}
+
+/* Dodatkowe style dla przycisku */
+button {
+    background-color: #d64161;
+    color: #ffffff;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    border: 2px solid #d64161;
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: #d64161;
+}
