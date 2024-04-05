@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request
+from .database import execute_query, fetch_data
 import subprocess
 import logging
 freecad_path = "/schody3d/FreeCadapp/freecad_appimage/squashfs-root/usr/bin/freecadcmd"
@@ -15,7 +16,25 @@ def home():
 
 @views.route("/admin/")
 def admin():
-    return render_template("admin.html")
+    # Pobierz dane z tabeli osoby
+    people = fetch_data("SELECT * FROM osoby")
+    return render_template("admin.html", people=people)
+
+@views.route("/admin/add/", methods=["POST"])
+def add_person():
+    if request.method == "POST":
+        # Pobierz dane z formularza
+        imie = request.form["imie"]
+        nazwisko = request.form["nazwisko"]
+        # Dodaj osobę do bazy danych
+        execute_query("INSERT INTO osoby (imie, nazwisko) VALUES (?, ?)", (imie, nazwisko))
+        return redirect(url_for("views.admin"))
+
+@views.route("/admin/delete/<int:id>")
+def delete_person(id):
+    # Usuń osobę o podanym id
+    execute_query("DELETE FROM osoby WHERE id=?", (id,))
+    return redirect(url_for("views.admin"))
 
 @views.route('/create/', methods=['GET', 'POST'])
 def create():

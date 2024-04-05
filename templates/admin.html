@@ -1,9 +1,23 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Wynik generowania schodów
+    Admin Panel
 {% endblock %}
 
 {% block content %}
-    <h1>AdminPanel</h1>
+    <h1>Admin Panel</h1>
+    <h2>People</h2>
+    <ul>
+        {% for person in people %}
+            <li>{{ person[1] }} {{ person[2] }} <a href="/admin/delete/{{ person[0] }}">Delete</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Add Person</h2>
+    <form action="/admin/add/" method="POST">
+        <label for="imie">Imię:</label>
+        <input type="text" id="imie" name="imie">
+        <label for="nazwisko">Nazwisko:</label>
+        <input type="text" id="nazwisko" name="nazwisko">
+        <button type="submit">Dodaj</button>
+    </form>
 {% endblock %}
