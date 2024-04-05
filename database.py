@@ -22,6 +22,6 @@ def fetch_data(query, args=None):
         cursor.execute(query, args)
     else:
         cursor.execute(query)
-    data = cursor.fetchall()
+    data = [dict(zip([column[0] for column in cursor.description], row)) for row in cursor.fetchall()]
     conn.close()
     return data
