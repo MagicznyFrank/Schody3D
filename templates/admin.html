@@ -27,7 +27,7 @@
             <td>{{ person['id'] }}</td>
             <td>{{ person['imie'] }}</td>
             <td>{{ person['nazwisko'] }}</td>
-            <td><a href="{{ url_for('views.delete_person', id=person['id']) }}">Usuń</a></td>
+            <td><a class="delete-link" href="{{ url_for('views.delete_person', id=person['id']) }}">Usuń</a></td>
         </tr>
         {% endfor %}
     </table>

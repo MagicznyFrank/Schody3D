@@ -250,3 +250,12 @@ button:hover {
     background-color: #ffffff;
     color: #d64161;
 }
+a.delete-link {
+    color: #d64161; /* Kolor tekstu */
+    text-decoration: none; /* Usunięcie podkreślenia */
+    font-weight: bold; /* Pogrubienie tekstu */
+}
+
+a.delete-link:hover {
+    color: #ffffff; /* Zmiana koloru tekstu po najechaniu myszką */
+}
