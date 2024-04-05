@@ -6,14 +6,6 @@
 
 {% block content %}
     <  <h1>Admin Panel</h1>
-    <h2>Lista osób:</h2>
-    <ul>
-        {% for person in people %}
-        <li>{{ person.id }}: {{ person.imie }} {{ person.nazwisko }}
-            <a href="{{ url_for('views.delete_person', id=person.id) }}">Usuń</a>
-        </li>
-        {% endfor %}
-    </ul>
     <h2>Dodaj osobę:</h2>
     <form action="{{ url_for('views.add_person') }}" method="POST">
         <label for="imie">Imię:</label>
@@ -22,4 +14,21 @@
         <input type="text" id="nazwisko" name="nazwisko"><br><br>
         <button type="submit">Dodaj osobę</button>
     </form>
+    <h2>Lista osób:</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Akcje</th>
+        </tr>
+        {% for person in people %}
+        <tr>
+            <td>{{ person['id'] }}</td>
+            <td>{{ person['imie'] }}</td>
+            <td>{{ person['nazwisko'] }}</td>
+            <td><a href="{{ url_for('views.delete_person', id=person['id']) }}">Usuń</a></td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
