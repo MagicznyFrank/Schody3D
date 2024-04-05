@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from .database import execute_query, fetch_data
+from database import execute_query, fetch_data
 import subprocess
 import logging
 freecad_path = "/schody3d/FreeCadapp/freecad_appimage/squashfs-root/usr/bin/freecadcmd"
