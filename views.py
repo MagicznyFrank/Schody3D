@@ -13,7 +13,6 @@ views = Blueprint(__name__, "views")
 @views.route("/")
 def home():
     return render_template("index.html")
-
 @views.route("/admin/")
 def admin():
     # Pobierz dane z tabeli osoby

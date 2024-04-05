@@ -5,19 +5,21 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Admin Panel</h1>
-    <h2>People</h2>
+    <  <h1>Admin Panel</h1>
+    <h2>Lista osób:</h2>
     <ul>
         {% for person in people %}
-            <li>{{ person[1] }} {{ person[2] }} <a href="/admin/delete/{{ person[0] }}">Delete</a></li>
+        <li>{{ person.id }}: {{ person.imie }} {{ person.nazwisko }}
+            <a href="{{ url_for('views.delete_person', id=person.id) }}">Usuń</a>
+        </li>
         {% endfor %}
     </ul>
-    <h2>Add Person</h2>
-    <form action="/admin/add/" method="POST">
+    <h2>Dodaj osobę:</h2>
+    <form action="{{ url_for('views.add_person') }}" method="POST">
         <label for="imie">Imię:</label>
-        <input type="text" id="imie" name="imie">
+        <input type="text" id="imie" name="imie"><br><br>
         <label for="nazwisko">Nazwisko:</label>
-        <input type="text" id="nazwisko" name="nazwisko">
-        <button type="submit">Dodaj</button>
+        <input type="text" id="nazwisko" name="nazwisko"><br><br>
+        <button type="submit">Dodaj osobę</button>
     </form>
 {% endblock %}
