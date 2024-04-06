@@ -6,15 +6,6 @@
 
 {% block content %}
     <h1>Admin Panel</h1>
-    <h2>Dodaj osobę:</h2>
-    <form action="{{ url_for('views.add_person') }}" method="POST">
-        <label for="imie">Imię:</label>
-        <input type="text" id="imie" name="imie"><br><br>
-        <label for="nazwisko">Nazwisko:</label>
-        <input type="text" id="nazwisko" name="nazwisko"><br><br>
-        <button type="submit">Dodaj osobę</button>
-    </form>
-    <h2>Lista osób:</h2>
     <table>
         <tr>
             <th>ID</th>
