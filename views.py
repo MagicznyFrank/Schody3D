@@ -18,7 +18,7 @@ def home():
 @views.route("/admin/")
 def admin():
     # Pobierz dane z tabeli osoby
-    people = fetch_data("SELECT * FROM osoby")
+    people = fetch_data("SELECT * FROM Schody")
     return render_template("admin.html", people=people)
 
 @views.route('/create/', methods=['GET', 'POST'])
