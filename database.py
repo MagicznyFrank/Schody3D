@@ -1,6 +1,6 @@
 import sqlite3
 
-DATABASE_NAME = 'main.db'
+DATABASE_NAME = 'Projects.db'
 
 def create_connection():
     return sqlite3.connect(DATABASE_NAME)

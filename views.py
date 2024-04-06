@@ -1,14 +1,16 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from database import execute_query, fetch_data
+import secrets
 import subprocess
 import logging
 freecad_path = "/schody3d/FreeCadapp/freecad_appimage/squashfs-root/usr/bin/freecadcmd"
 
 views = Blueprint(__name__, "views")
 
-# Konfiguracja loggera
-#logging.basicConfig(filename='logfile.log', level=logging.INFO)
 
+def generate_session_id():
+    session_id = secrets.token_hex(16)
+    return session_id
 
 @views.route("/")
 def home():

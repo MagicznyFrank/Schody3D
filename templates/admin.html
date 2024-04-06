@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <  <h1>Admin Panel</h1>
+    <h1>Admin Panel</h1>
     <h2>Dodaj osobę:</h2>
     <form action="{{ url_for('views.add_person') }}" method="POST">
         <label for="imie">Imię:</label>
@@ -24,10 +24,13 @@
         </tr>
         {% for person in people %}
         <tr>
-            <td>{{ person['id'] }}</td>
-            <td>{{ person['imie'] }}</td>
-            <td>{{ person['nazwisko'] }}</td>
-            <td><a class="delete-link" href="{{ url_for('views.delete_person', id=person['id']) }}">Usuń</a></td>
+            <td>{{ person['session_id'] }}</td>
+            <td>{{ person['length'] }}</td>
+            <td>{{ person['width'] }}</td>
+            <td>{{ person['height'] }}</td>
+            <td>{{ person['step_height'] }}</td>
+            <td>{{ person['number_of_steps'] }}</td>
+            <td><a class="delete-link" href="{{ url_for('views.delete_person', id=person['session_id']) }}">Usuń</a></td>
         </tr>
         {% endfor %}
     </table>
