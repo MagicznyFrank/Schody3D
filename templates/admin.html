@@ -14,15 +14,19 @@
             <th>Wyokość</th>
             <th>Wysokość stopnia</th>
             <th>Liczba stopni</th>
+            <th>Typ schodów</th>
+            <th> Data stworzenia</th>
         </tr>
-        {% for person in people %}
+        {% for stairs in stairs %}
         <tr>
-            <td>{{ person['session_id'] }}</td>
-            <td>{{ person['length'] }}</td>
-            <td>{{ person['width'] }}</td>
-            <td>{{ person['height'] }}</td>
-            <td>{{ person['step_height'] }}</td>
-            <td>{{ person['number_of_steps'] }}</td>
+            <td>{{ stairs['session_id'] }}</td>
+            <td>{{ stairs['length'] }}</td>
+            <td>{{ stairs['width'] }}</td>
+            <td>{{ stairs['height'] }}</td>
+            <td>{{ stairs['step_height'] }}</td>
+            <td>{{ stairs['number_of_steps'] }}</td>
+            <td>{{ stairs['type'] }}</td>
+            <td>{{ stairs['generated_date'] }}</td>
         </tr>
         {% endfor %}
     </table>
