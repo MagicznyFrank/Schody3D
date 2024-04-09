@@ -41,6 +41,14 @@ def create():
             logging.error(f"Error converting arguments to numbers: {str(e)}")
             return render_template('error.html', error_message="Invalid input. Please enter numeric values.")
 
+        # Generuj nowy identyfikator sesji
+        session_id = generate_session_id()
+
+        # Dodaj nowy rekord do bazy danych
+        execute_query("INSERT INTO Stairs (session_id, length, width, height, step_height, number_of_steps) VALUES (?, ?, ?, ?, ?, ?)",
+                      (session_id, length, width, height, step_height, num_steps))
+
+        # Wywołaj skrypt FreeCADa
         subprocess.run(
             [freecad_path, '-c', 'FreeCadScripts/Schody_Proste.FCMacro', str(length), str(width),
              str(height), str(step_height), str(num_steps)])
