@@ -9,7 +9,7 @@ views = Blueprint(__name__, "views")
 
 
 def generate_session_id():
-    session_id = secrets.token_hex(16)
+    session_id = ''.join(str(secrets.randbelow(10)) for _ in range(16))
     return session_id
 
 @views.route("/")
@@ -61,27 +61,3 @@ def create():
 @views.route('/result/')
 def result():
     return render_template('result.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
