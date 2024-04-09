@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from database import execute_query, fetch_data
+from datetime import date
 import secrets
 import subprocess
 import logging
@@ -20,6 +21,7 @@ def admin():
     # Pobierz dane z tabeli osoby
     stairs = fetch_data("SELECT * FROM Stairs")
     return render_template("admin.html", stairs=stairs)
+
 
 @views.route('/create/', methods=['GET', 'POST'])
 def create():
@@ -45,8 +47,8 @@ def create():
         session_id = generate_session_id()
 
         # Dodaj nowy rekord do bazy danych
-        execute_query("INSERT INTO Stairs (session_id, length, width, height, step_height, number_of_steps) VALUES (?, ?, ?, ?, ?, ?)",
-                      (session_id, length, width, height, step_height, num_steps))
+        execute_query("INSERT INTO Stairs (session_id, length, width, height, step_height, number_of_steps, Type, generated_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                      (session_id, length, width, height, step_height, num_steps, "proste", date.today()))
 
         # Wywołaj skrypt FreeCADa
         subprocess.run(
