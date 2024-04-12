@@ -246,7 +246,7 @@ button {
     margin: 0 auto;
 }
 
-a.delete-link {
+delete-button{
     background-color: #d64161;
     color: #ffffff;
     padding: 3px;
@@ -256,6 +256,6 @@ a.delete-link {
     transition: background-color 0.3s;
 }
 
-a.delete-link:hover {
+delete-button:hover {
     background-color: #cc0000;
 }
