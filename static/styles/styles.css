@@ -214,7 +214,7 @@ table {
 }
 
 th, td {
-    padding: 4px; /* Wypełnienie komórek */
+    padding: 10px; /* Wypełnienie komórek */
     border: 1px solid #d64161; /* Obramowanie komórek */
     text-align: left; /* Wyrównanie tekstu do lewej */
 }
@@ -246,7 +246,7 @@ button {
     margin: 0 auto;
 }
 
-.delete-button {
+a.delete-link {
     background-color: #d64161;
     color: #ffffff;
     padding: 3px;
@@ -256,6 +256,6 @@ button {
     transition: background-color 0.3s;
 }
 
-.delete-button:hover {
+a.delete-link:hover {
     background-color: #cc0000;
 }

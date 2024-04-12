@@ -28,8 +28,11 @@
             <td>{{ stairs['number_of_steps'] }}</td>
             <td>{{ stairs['Type'] }}</td>
             <td>{{ stairs['generated_date'] }}</td>
-             <td>
-
+            <td>
+            <li>
+                {{ stairs['session_id'] }}:
+                <a class="delete-link" href="{{ url_for('views.delete_stairs', session_id=stairs['session_id']) }}">Usuń</a>
+            </li>
         </td>
         </tr>
         {% endfor %}
