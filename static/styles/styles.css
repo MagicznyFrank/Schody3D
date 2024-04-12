@@ -233,9 +233,13 @@ tr:hover {
     background-color: #1a304e; /* Kolor tła podczas najechania myszką */
 }
 
-/* Dodatkowe style dla przycisku */
+.delete-form {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
 
-delete-button{
+.delete-button{
     background-color: #d64161;
     color: #ffffff;
     padding: 3px;
@@ -245,12 +249,6 @@ delete-button{
     transition: background-color 0.3s;
 }
 
-delete-button:hover {
+.delete-button:hover {
     background-color: #cc0000;
-}
-
-.delete-form {
-    margin: 0;
-    padding: 0;
-    border: none;
 }
