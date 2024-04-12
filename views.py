@@ -21,7 +21,12 @@ def admin():
     # Pobierz dane z tabeli osoby
     stairs = fetch_data("SELECT * FROM Stairs")
     return render_template("admin.html", stairs=stairs)
-
+@views.route("/admin/delete/<session_id>", methods=["POST"])
+def delete_stairs(session_id):
+    if request.method == "POST":
+        # Usuń rekord z bazy danych na podstawie session_id
+        execute_query("DELETE FROM Stairs WHERE session_id=?", (session_id,))
+        return redirect(url_for("views.admin"))
 
 @views.route('/create/', methods=['GET', 'POST'])
 def create():
