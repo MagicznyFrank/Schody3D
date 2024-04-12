@@ -214,7 +214,7 @@ table {
 }
 
 th, td {
-    padding: 10px; /* Wypełnienie komórek */
+    padding: 4px; /* Wypełnienie komórek */
     border: 1px solid #d64161; /* Obramowanie komórek */
     text-align: left; /* Wyrównanie tekstu do lewej */
 }
@@ -231,6 +231,19 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #1a304e; /* Kolor tła podczas najechania myszką */
+}
+
+/* Dodatkowe style dla przycisku */
+button {
+    background-color: #d64161;
+    color: #ffffff;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    border: 2px solid #d64161;
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
 }
 
 .delete-button {
