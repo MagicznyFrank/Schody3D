@@ -34,7 +34,7 @@ def admin():
     if sort_by:
         query += f" ORDER BY {sort_by} {order}"
 
-    stairs = fetch_data("SELECT * FROM Stairs")
+    stairs = fetch_data(query)
     return render_template("admin.html", stairs=stairs)
 
 @views.route('/delete/<session_id>', methods=['POST'])
