@@ -246,16 +246,16 @@ button {
     margin: 0 auto;
 }
 
-button:hover {
-    background-color: #ffffff;
-    color: #d64161;
-}
-button.delete-link {
-    color: #d64161; /* Kolor tekstu */
-    text-decoration: none; /* Usunięcie podkreślenia */
-    font-weight: bold; /* Pogrubienie tekstu */
+.delete-button {
+    background-color: #ff4444; /* Kolor tła */
+    color: #ffffff; /* Kolor tekstu */
+    padding: 5px 10px; /* Wielkość wewnętrznego marginesu */
+    border: none; /* Usunięcie obramowania */
+    border-radius: 3px; /* Zaokrąglenie rogów */
+    cursor: pointer; /* Zmień kursor na wskaźnik */
+    transition: background-color 0.3s; /* Efekt przejścia przy najechaniu myszą */
 }
 
-button.delete-link:hover {
-    color: #ffffff; /* Zmiana koloru tekstu po najechaniu myszką */
+.delete-button:hover {
+    background-color: #cc0000; /* Zmiana koloru tła przy najechaniu myszą */
 }
