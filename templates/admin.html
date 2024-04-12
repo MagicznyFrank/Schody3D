@@ -6,16 +6,21 @@
 
 {% block content %}
     <h1>Admin Panel</h1>
+    <form action="" method="get">
+        <input type="text" name="type" placeholder="Filtruj po typie schodów">
+        <input type="submit" value="Filtruj">
+    </form>
+
     <table>
         <tr>
             <th>Id_sesji</th>
-            <th>Długość</th>
-            <th>Szerokość</th>
-            <th>Wyokość</th>
-            <th>Wysokość stopnia</th>
-            <th>Liczba stopni</th>
+            <th><a href="?sort=length">Długość</a></th>
+            <th><a href="?sort=width">Szerokość</a></th>
+            <th><a href="?sort=height">Wyokość</a><</th>
+            <th><a href="?sort=step_height">Wysokość stopnia</a><</th>
+            <th><a href="?sort=number_of_steps">Liczba stopni</a><</th>
             <th>Typ schodów</th>
-            <th> Data stworzenia</th>
+            <th> <a href="?sort=generated_date">Data stworzenia</a><</th>
             <th>Akcje</th>
         </tr>
         {% for stairs in stairs %}

@@ -18,9 +18,25 @@ def home():
     return render_template("index.html")
 @views.route("/admin/")
 def admin():
-    # Pobierz dane z tabeli osoby
+    sort_by = request.args.get('sort', 'session_id')
+    order = request.args.get('order', 'asc')
+    filter_type = request.args.get('type')
+
+    query = "SELECT * FROM Stairs"
+    conditions = []
+
+    if filter_type:
+        conditions.append(f"Type = '{filter_type}'")
+
+    if conditions:
+        query += " WHERE " + " AND ".join(conditions)
+
+    if sort_by:
+        query += f" ORDER BY {sort_by} {order}"
+
     stairs = fetch_data("SELECT * FROM Stairs")
     return render_template("admin.html", stairs=stairs)
+
 @views.route('/delete/<session_id>', methods=['POST'])
 def delete_stairs(session_id):
     if request.method == 'POST':
