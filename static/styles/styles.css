@@ -247,15 +247,15 @@ button {
 }
 
 .delete-button {
-    background-color: #ff4444; /* Kolor tła */
-    color: #ffffff; /* Kolor tekstu */
-    padding: 5px 10px; /* Wielkość wewnętrznego marginesu */
-    border: none; /* Usunięcie obramowania */
-    border-radius: 3px; /* Zaokrąglenie rogów */
-    cursor: pointer; /* Zmień kursor na wskaźnik */
-    transition: background-color 0.3s; /* Efekt przejścia przy najechaniu myszą */
+    background-color: #d64161;
+    color: #ffffff;
+    padding: 3px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .delete-button:hover {
-    background-color: #cc0000; /* Zmiana koloru tła przy najechaniu myszą */
+    background-color: #cc0000;
 }
