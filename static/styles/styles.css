@@ -234,17 +234,6 @@ tr:hover {
 }
 
 /* Dodatkowe style dla przycisku */
-button {
-    background-color: #d64161;
-    color: #ffffff;
-    padding: 15px 25px;
-    font-size: 1.2em;
-    border: 2px solid #d64161;
-    border-radius: 10px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-}
 
 delete-button{
     background-color: #d64161;
@@ -258,4 +247,10 @@ delete-button{
 
 delete-button:hover {
     background-color: #cc0000;
+}
+
+.delete-form {
+    margin: 0;
+    padding: 0;
+    border: none;
 }
