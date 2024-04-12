@@ -16,6 +16,7 @@
             <th>Liczba stopni</th>
             <th>Typ schodów</th>
             <th> Data stworzenia</th>
+            <th>Akcje</th>
         </tr>
         {% for stairs in stairs %}
         <tr>
@@ -27,6 +28,11 @@
             <td>{{ stairs['number_of_steps'] }}</td>
             <td>{{ stairs['Type'] }}</td>
             <td>{{ stairs['generated_date'] }}</td>
+             <td>
+            <form action="{{ url_for('views.delete_stairs', session_id=stairs['session_id']) }}" method="POST">
+                <button type="submit">Usuń</button>
+            </form>
+        </td>
         </tr>
         {% endfor %}
     </table>

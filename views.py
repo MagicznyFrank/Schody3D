@@ -45,11 +45,10 @@ def create():
 
         # Generuj nowy identyfikator sesji
         session_id = generate_session_id()
-        Stairs_type="proste"
 
         # Dodaj nowy rekord do bazy danych
         execute_query("INSERT INTO Stairs (session_id, length, width, height, step_height, number_of_steps, Type, generated_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                      (session_id, length, width, height, step_height, num_steps, Stairs_type, date.today()))
+                      (session_id, length, width, height, step_height, num_steps, "proste", date.today()))
 
         # Wywołaj skrypt FreeCADa
         subprocess.run(
