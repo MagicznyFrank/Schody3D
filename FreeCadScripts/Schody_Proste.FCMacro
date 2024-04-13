@@ -74,3 +74,4 @@ def get_stair_parameters():
 
 if __name__ == '__main__':
     get_stair_parameters()
+    sys.exit(0)
