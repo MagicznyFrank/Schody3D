@@ -16,6 +16,7 @@ def generate_session_id():
 @views.route("/")
 def home():
     return render_template("index.html")
+@views.route("/admin/")
 def admin():
     current_sort_by = request.args.get('sort', 'session_id')
     current_order = request.args.get('order', 'asc')
