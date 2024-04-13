@@ -253,3 +253,10 @@ tr:hover {
 .delete-button:hover {
     background-color: #cc0000;
 }
+.a{
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
