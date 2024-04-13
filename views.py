@@ -16,10 +16,9 @@ def generate_session_id():
 @views.route("/")
 def home():
     return render_template("index.html")
-@views.route("/admin/")
 def admin():
-    sort_by = request.args.get('sort', 'session_id')
-    order = request.args.get('order', 'asc')
+    current_sort_by = request.args.get('sort', 'session_id')
+    current_order = request.args.get('order', 'asc')
     filter_type = request.args.get('type')
 
     query = "SELECT * FROM Stairs"
@@ -31,11 +30,18 @@ def admin():
     if conditions:
         query += " WHERE " + " AND ".join(conditions)
 
-    if sort_by:
-        query += f" ORDER BY {sort_by} {order}"
+    if current_sort_by:
+        # Logika zmiany kierunku sortowania
+        previous_sort_by = request.args.get('prev_sort')  # Pobierz poprzedni typ sortowania z parametru URL
+        if previous_sort_by and previous_sort_by == current_sort_by:
+            # Odwróć kierunek sortowania jeśli kolumna była już sortowana
+            new_order = 'desc' if current_order == 'asc' else 'asc'
+        else:
+            new_order = 'asc'  # Domyślne sortowanie rosnąco
+        query += f" ORDER BY {current_sort_by} {new_order}"
 
     stairs = fetch_data(query)
-    return render_template("admin.html", stairs=stairs)
+    return render_template("admin.html", stairs=stairs, sort_by=current_sort_by, order=new_order, prev_sort=current_sort_by)
 
 @views.route('/delete/<session_id>', methods=['POST'])
 def delete_stairs(session_id):
