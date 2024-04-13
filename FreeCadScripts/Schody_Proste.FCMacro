@@ -4,26 +4,17 @@ import importWebGL
 import logging
 import traceback
 from datetime import datetime
-import string
-import random
 import os
-import webbrowser
-
 
 # Konfiguracja loggera
 log_file_path = '/schody3d/Schody3D/freecad.log'
 logging.basicConfig(filename=log_file_path, level=logging.INFO)
 
-def generate_random_name(length=15):
-    #Generuje losową nazwę
-    letters = string.ascii_letters + string.digits
-    return ''.join(random.choice(letters) for _ in range(length))
-
-def create_stairs(length, width, step_height, step_spacing, num_steps):
+def create_stairs(session_id, length, width, step_height, step_spacing, num_steps):
     try:
-        # Generowanie losowej nazwy
-        doc_name = generate_random_name()
-        logging.info("{} - Active document: {} - Generated document name: {}".format(
+        # Użyj session_id jako nazwy dokumentu
+        doc_name = session_id
+        logging.info("{} - Active document: {} - Using session_id as document name: {}".format(
             datetime.now(), App.ActiveDocument.Label if App.ActiveDocument else 'None', doc_name))
 
         # Stwórz nowy dokument
@@ -36,7 +27,7 @@ def create_stairs(length, width, step_height, step_spacing, num_steps):
 
         substep_height = step_spacing + step_height
 
-        for i in range(2, int(num_steps) + 1):  # Zmieniono num_steps na int
+        for i in range(2, int(num_steps) + 1):
             step = first_step.copy()
             step.Placement.Base += App.Vector(0, i * width, 0)
             step.Placement.Base += App.Vector(0, 0, (i - 1) * (step_spacing + step_height))
@@ -48,82 +39,38 @@ def create_stairs(length, width, step_height, step_spacing, num_steps):
             doc.addObject("Part::Feature", "Substep{}".format(i)).Shape = substep
 
         doc.recompute()
-
-        # Dodaj log dla aktualnej ścieżki roboczej
-        current_directory = os.getcwd()
-        logging.info("{} - Current working directory: {}".format(datetime.now(), current_directory))
-
-        logging.info("{} - Active document: {} - Stairs created successfully with parameters: length={}, width={}, step_height={}, step_spacing={}, num_steps={}".format(
-            datetime.now(), App.ActiveDocument.Label if App.ActiveDocument else 'None', length, width, step_height, step_spacing, num_steps))
+        logging.info("{} - Document created and stairs built successfully.".format(datetime.now()))
         return doc_name
     except Exception as e:
-        logging.error("{} - Active document: {} - Error during stairs creation: {}".format(
-            datetime.now(), App.ActiveDocument.Label if App.ActiveDocument else 'None', str(e)))
-        logging.error(traceback.format_exc())
+        logging.error("Error during stairs creation: {}".format(str(e)))
+        traceback.print_exc()
         raise
 
 def export_to_webgl(doc_name, num_steps):
     try:
-        # Eksportuj do formatu WebGl
         doc = App.getDocument(doc_name)
-
         if doc:
-            doc.saveAs("FreeCadProjects/{}.FCStd".format(doc_name))
-            objs = []
-
-            for i in range(1, int(num_steps) + 1):
-                step_name = "Step{}".format(i)
-                substep_name = "Substep{}".format(i)
-
-                if doc.getObject(step_name):
-                    objs.append(doc.getObject(step_name))
-
-                if doc.getObject(substep_name):
-                    objs.append(doc.getObject(substep_name))
-
-            #ścieżka do eksportu
-            export_path = "FreeCadProjects/{}.html".format(doc_name)
-            logging.info("{} - Active document: {} - Export path: {}".format(
-                datetime.now(), doc.Label if doc else 'None', export_path))
-            logging.info("{} - Active document: {} - Export objs: {}".format(
-                datetime.now(), doc.Label if doc else 'None', objs))
+            doc.saveAs(f"FreeCadProjects/{doc_name}.FCStd")
+            objs = [doc.getObject(f"Step{i}") for i in range(1, int(num_steps) + 1)]
+            export_path = f"FreeCadProjects/{doc_name}.html"
             importWebGL.export(objs, export_path)
-            logging.info("{} - Active document: {} - Exported to WebGL successfully: {}".format(
-                datetime.now(), doc.Label if doc else 'None', export_path))
-
-            #webbrowser.open('file://' + os.path.realpath(export_path))
+            logging.info("Exported to WebGL successfully: {}".format(export_path))
         else:
-            logging.error("{} - Active document: None - Error during WebGL export: Document not found".format(
-                datetime.now()))
+            logging.error("Document not found for WebGL export.")
     except Exception as e:
-        logging.error("{} - Active document: {} - Error during WebGL export: {}".format(
-            datetime.now(), doc.Label if doc else 'None', str(e)))
-        logging.error(traceback.format_exc())
+        logging.error("Error during WebGL export: {}".format(str(e)))
+        traceback.print_exc()
 
 def get_stair_parameters():
-    try:
-        # Pobierz parametry z linii poleceń
-        logging.info("{} - Active document: {} - Received arguments: {}".format(
-            datetime.now(), App.ActiveDocument.Label if App.ActiveDocument else 'None', sys.argv))
+    session_id = sys.argv[3]
+    length = float(sys.argv[4])
+    width = float(sys.argv[5])
+    step_height = float(sys.argv[6])
+    step_spacing = float(sys.argv[7])
+    num_steps = int(sys.argv[8])
 
-        length = float(sys.argv[3])
-        width = float(sys.argv[4])
-        step_height = float(sys.argv[5])
-        step_spacing = float(sys.argv[6])
-        num_steps = float(sys.argv[7])
-
-        # Dodaj log przed utworzeniem schodów
-        logging.info("{} - Active document: {} - Creating stairs with parameters: length={}, width={}, step_height={}, step_spacing={}, num_steps={}".format(
-            datetime.now(), App.ActiveDocument.Label if App.ActiveDocument else 'None', length, width, step_height, step_spacing, num_steps))
-
-        # Utwórz schody i eksportuj do WebGL
-        doc_name = create_stairs(length, width, step_height, step_spacing, num_steps)
-        export_to_webgl(doc_name, num_steps)
-    except Exception as e:
-        logging.error("{} - Active document: {} - Error during script execution: {}".format(
-            datetime.now(), App.ActiveDocument.Label if App.ActiveDocument else 'None', str(e)))
-        logging.error(traceback.format_exc())
+    doc_name = create_stairs(session_id, length, width, step_height, step_spacing, num_steps)
+    export_to_webgl(doc_name, num_steps)
 
 if __name__ == '__main__':
     get_stair_parameters()
-    sys.exit(0)
