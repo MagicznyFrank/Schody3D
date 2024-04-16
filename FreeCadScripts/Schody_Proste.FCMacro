@@ -48,13 +48,21 @@ def create_stairs(session_id, length, width, step_height, step_spacing, num_step
 
 def export_to_webgl(doc_name, num_steps):
     try:
-        doc = App.ActiveDocument
+        doc = App.getActiveDocument()
         if doc:
             doc.saveAs(f"FreeCadProjects/{doc_name}.FCStd")
-            objs = [doc.getObject(f"Step{i}") for i in range(1, int(num_steps) + 1)]
+            objs = []
+            for i in range(1, int(num_steps) + 1):
+                step_name = f"Step{i}"
+                substep_name = f"Substep{i}"
+                if doc.getObject(step_name):
+                    objs.append(doc.getObject(step_name))
+                if doc.getObject(substep_name):
+                    objs.append(doc.getObject(substep_name))
+
             export_path = f"FreeCadProjects/{doc_name}.html"
             importWebGL.export(objs, export_path)
-            logging.info("Exported to WebGL successfully: {}".format(export_path))
+            logging.info("Exported to WebGL successfully with objects: {}".format([o.Label for o in objs]))
         else:
             logging.error("Document not found for WebGL export.")
     except Exception as e:
