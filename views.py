@@ -1,8 +1,9 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, send_from_directory
 from database import execute_query, fetch_data
 from datetime import date
 import secrets
 import subprocess
+import os
 import logging
 
 freecad_path = "/schody3d/FreeCadapp/freecad_appimage/squashfs-root/usr/bin/freecadcmd"
@@ -37,6 +38,17 @@ def admin():
 def delete_stairs(session_id):
     execute_query("DELETE FROM Stairs WHERE session_id=?", (session_id,))
     return redirect(url_for("views.admin"))
+
+FREECAD_PROJECTS_DIR = '/path/to/FreeCadProjects'  # Zmień ścieżkę na właściwą
+
+@views.route('/projects/<session_id>')
+def serve_project(session_id):
+    """Serve the HTML file for a given session."""
+    file_path = f"{session_id}.html"
+    if os.path.exists(os.path.join(FREECAD_PROJECTS_DIR, file_path)):
+        return send_from_directory(FREECAD_PROJECTS_DIR, file_path)
+    else:
+        return "File not found", 404
 
 @views.route('/create/', methods=['GET', 'POST'])
 def create():
