@@ -39,7 +39,8 @@ def delete_stairs(session_id):
     execute_query("DELETE FROM Stairs WHERE session_id=?", (session_id,))
     return redirect(url_for("views.admin"))
 
-FREECAD_PROJECTS_DIR = '/schody3d/Schody3D/FreeCadProjects'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FREECAD_PROJECTS_DIR = os.path.join(BASE_DIR, 'FreeCadProjects')
 
 @views.route('/projects/<session_id>')
 def serve_project(session_id):
