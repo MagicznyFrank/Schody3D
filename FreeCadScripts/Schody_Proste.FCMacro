@@ -1,10 +1,10 @@
-import Part
 import sys
 import importWebGL
 import logging
 import traceback
 from datetime import datetime
 import os
+import Part
 
 # Konfiguracja loggera
 log_file_path = '/schody3d/Schody3D/freecad.log'
