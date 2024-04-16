@@ -51,7 +51,7 @@ def serve_project(session_id):
     else:
         return "File not found", 404
 
-@@views.route('/create/', methods=['GET', 'POST'])
+@views.route('/create/', methods=['GET', 'POST'])
 def create():
     if request.method == 'POST':
         length = request.form.get("Długość stopnia (mm)")
@@ -65,6 +65,8 @@ def create():
             height = float(height)
             step_height = float(step_height)
             num_steps = int(num_steps)
+        except ValueError:
+            return render_template('error.html', error_message="Invalid input. Please enter numeric values.")
         session_id = generate_session_id()
         execute_query("INSERT INTO Stairs (session_id, length, width, height, step_height, number_of_steps, Type, generated_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
                       (session_id, length, width, height, step_height, num_steps, "proste", date.today()))
@@ -75,7 +77,3 @@ def create():
 @views.route('/result/<session_id>')
 def result(session_id):
     return render_template('result.html', session_id=session_id)
-
-@views.route('/result/')
-def result():
-    return render_template('result.html')
