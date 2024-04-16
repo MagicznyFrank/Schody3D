@@ -253,10 +253,12 @@ tr:hover {
 .delete-button:hover {
     background-color: #cc0000;
 }
-.a{
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
-    border: none;
+th a {
+    text-decoration: none; /* Usunięcie podkreślenia */
+    color: #ffffff; /* Kolor tekstu */
+    transition: color 0.3s; /* Animacja zmiany koloru */
+}
+
+th a:hover {
+    color: #d64161; /* Kolor tekstu po najechaniu myszką */
 }
