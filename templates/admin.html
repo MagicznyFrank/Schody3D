@@ -17,6 +17,7 @@
             <th>Typ schodów</th>
             <th> <a href="?sort=generated_date&prev_sort={{ sort_by }}&order={{ order }}">Data stworzenia</a></th>
             <th>Akcje</th>
+            <th>Projekt</th>
         </tr>
         {% for stairs in stairs %}
         <tr>
@@ -33,6 +34,7 @@
                 <button class="delete-button" type="submit">Usuń</button>
             </form>
         </td>
+            <td>Link</td>
         </tr>
         {% endfor %}
     </table>
