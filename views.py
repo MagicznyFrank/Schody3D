@@ -39,7 +39,7 @@ def delete_stairs(session_id):
     execute_query("DELETE FROM Stairs WHERE session_id=?", (session_id,))
     return redirect(url_for("views.admin"))
 
-FREECAD_PROJECTS_DIR = '/path/to/FreeCadProjects'  # Zmień ścieżkę na właściwą
+FREECAD_PROJECTS_DIR = '/FreeCadProjects'
 
 @views.route('/projects/<session_id>')
 def serve_project(session_id):
