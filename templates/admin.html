@@ -34,7 +34,8 @@
                     <button class="delete-button" type="submit">Usuń</button>
                 </form>
             </td>
-            <td><a href="{{ url_for('FreeCadProjects', filename=stairs['session_id'] ~ '.html') }}" target="_blank">Otwórz projekt</a></td>
+            <td><a href="{{ url_for('views.serve_project', session_id=stairs['session_id']) }}" target="_blank">Otwórz projekt</a></td>
+
         </tr>
         {% endfor %}
     </table>
