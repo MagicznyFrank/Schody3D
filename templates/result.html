@@ -6,6 +6,11 @@
 
 {% block content %}
     <h1>Generowanie schodów zakończone sukcesem!</h1>
-    <p>Plik został utworzony i eksportowany do formatu WebGl.</p>
+    <p>Plik został utworzony i eksportowany do formatu WebGL.</p>
+    <script>
+        window.onload = function() {
+            window.open("{{ url_for('views.serve_project', session_id=session_id) }}", "_blank");
+        }
+    </script>
     <p><a href="{{ url_for('views.home') }}">Powrót do strony głównej</a></p>
 {% endblock %}
