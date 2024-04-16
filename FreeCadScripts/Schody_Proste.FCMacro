@@ -1,10 +1,10 @@
+import Part
 import sys
 import importWebGL
 import logging
 import traceback
 from datetime import datetime
 import os
-import Part
 
 # Konfiguracja loggera
 log_file_path = '/schody3d/Schody3D/freecad.log'
@@ -12,12 +12,9 @@ logging.basicConfig(filename=log_file_path, level=logging.INFO)
 
 def create_stairs(session_id, length, width, step_height, step_spacing, num_steps):
     try:
-        # Użyj session_id jako nazwy dokumentu
         doc_name = session_id
-        logging.info("{} - Active document: {} - Using session_id as document name: {}".format(
-            datetime.now(), App.ActiveDocument.Label if App.ActiveDocument else 'None', doc_name))
+        logging.info("{} - Active document: {} - Using session_id as document name: {}".format(datetime.now(), App.ActiveDocument.Label if App.ActiveDocument else 'None', doc_name))
 
-        # Stwórz nowy dokument
         App.newDocument(doc_name)
         doc = App.ActiveDocument
 
@@ -31,12 +28,12 @@ def create_stairs(session_id, length, width, step_height, step_spacing, num_step
             step = first_step.copy()
             step.Placement.Base += App.Vector(0, i * width, 0)
             step.Placement.Base += App.Vector(0, 0, (i - 1) * (step_spacing + step_height))
-            doc.addObject("Part::Feature", "Step{}".format(i)).Shape = step
+            doc.addObject("Part::Feature", f"Step{i}").Shape = step
 
             substep = Part.makeBox(length, 50, substep_height)
             substep.Placement.Base = step.Placement.Base
             substep.Placement.Base += App.Vector(0, 0, -substep_height)
-            doc.addObject("Part::Feature", "Substep{}".format(i)).Shape = substep
+            doc.addObject("Part::Feature", f"Substep{i}").Shape = substep
 
         doc.recompute()
         logging.info("{} - Document created and stairs built successfully.".format(datetime.now()))
@@ -48,10 +45,18 @@ def create_stairs(session_id, length, width, step_height, step_spacing, num_step
 
 def export_to_webgl(doc_name, num_steps):
     try:
-        doc = App.ActiveDocument
+        doc = App.getDocument(doc_name)
         if doc:
             doc.saveAs(f"FreeCadProjects/{doc_name}.FCStd")
-            objs = [doc.getObject(f"Step{i}") for i in range(1, int(num_steps) + 1)]
+            objs = []
+            for i in range(1, int(num_steps) + 1):
+                step = doc.getObject(f"Step{i}")
+                substep = doc.getObject(f"Substep{i}")
+                if step:
+                    objs.append(step)
+                if substep:
+                    objs.append(substep)
+
             export_path = f"FreeCadProjects/{doc_name}.html"
             importWebGL.export(objs, export_path)
             logging.info("Exported to WebGL successfully: {}".format(export_path))
