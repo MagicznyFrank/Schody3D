@@ -77,3 +77,12 @@ def create():
 @views.route('/result/<session_id>')
 def result(session_id):
     return render_template('result.html', session_id=session_id)
+
+@views.route('/download/<session_id>')
+def download_project(session_id):
+    """Allow the user to download the HTML file for a given session."""
+    file_path = f"{session_id}.html"
+    if os.path.exists(os.path.join(FREECAD_PROJECTS_DIR, file_path)):
+        return send_from_directory(FREECAD_PROJECTS_DIR, file_path, as_attachment=True)
+    else:
+        return "File not found", 404
