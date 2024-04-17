@@ -1,27 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="form-container"><div class="form-container-background">
-    <h1>{% block title %}Generator {% endblock %}</h1>
-    <form method="post" onsubmit="return validateForm(), abc()">
-        <label>
-            <input type="text" name="Długość stopnia (mm)" placeholder="Długość stopnia w mm">
-        </label>
-        <label>
-            <input type="text" name="Szerokość stopnia (mm)" placeholder="Szerokość stopnia w mm">
-        </label>
-        <label>
-            <input type="text" name="Wysokość stopnia (mm)" placeholder="Wysokość stopnia w mm">
-        </label>
-        <label>
-            <input type="text"  name="Wysokość między stopniami (mm)" placeholder="Wysokość między stopniami w mm">
-        </label>
-        <label>
-            <input type="text" name="Ilość stopni" placeholder="Ilość stopni">
-        </label>
-        <button type="submit" id="submitButton">Stwórz!</button>
-    </form>
-    <div id="loadingIcon"></div>
+<div class="form-container">
+    <div class="form-container-background">
+        <h1>{% block title %}Generator Schodów{% endblock %}</h1>
+        <form method="post" onsubmit="return validateForm()">
+            <label for="length-slider">Długość stopnia (mm): <span id="length-output">1000</span></label>
+            <input type="range" id="length-slider" name="Długość stopnia (mm)" min="500" max="2000" value="1000" step="10" oninput="updateOutput('length-output', this.value)">
+            <label for="width-slider">Szerokość stopnia (mm): <span id="width-output">300</span></label>
+            <input type="range" id="width-slider" name="Szerokość stopnia (mm)" min="100" max="1000" value="300" step="10" oninput="updateOutput('width-output', this.value)">
+            <label for="height-slider">Wysokość stopnia (mm): <span id="height-output">150</span></label>
+            <input type="range" id="height-slider" name="Wysokość stopnia (mm)" min="50" max="300" value="150" step="5" oninput="updateOutput('height-output', this.value)">
+            <label for="spacing-slider">Wysokość między stopniami (mm): <span id="spacing-output">200</span></label>
+            <input type="range" id="spacing-slider" name="Wysokość między stopniami (mm)" min="100" max="400" value="200" step="5" oninput="updateOutput('spacing-output', this.value)">
+            <label for="steps-slider">Ilość stopni: <span id="steps-output">10</span></label>
+            <input type="range" id="steps-slider" name="Ilość stopni" min="1" max="20" value="10" step="1" oninput="updateOutput('steps-output', this.value)">
+            <button type="submit" id="submitButton">Stwórz!</button>
+        </form>
+    </div>
 </div>
-</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function updateOutput(id, value) {
+        document.getElementById(id).textContent = value;
+    }
+
+</script>
 {% endblock %}
