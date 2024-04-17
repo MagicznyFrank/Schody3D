@@ -4,14 +4,32 @@
 <div class="form-container">
     <div class="form-container-background">
         <h1>{% block title %}Generator Schodów{% endblock %}</h1>
-        <form method="post" onsubmit="return validateForm()">
-            {% for attribute, min, max, step in [('Długość stopnia (mm)', 500, 2000, 10), ('Szerokość stopnia (mm)', 100, 1000, 10), ('Wysokość stopnia (mm)', 50, 300, 5), ('Wysokość między stopniami (mm)', 100, 400, 5), ('Ilość stopni', 1, 20, 1)] %}
+        <form method="post">
             <div>
-                <label for="{{ attribute|replace(' ', '_')|lower }}-slider">{{ attribute }}:</label>
-                <input type="range" id="{{ attribute|replace(' ', '_')|lower }}-slider" name="{{ attribute }}" min="{{ min }}" max="{{ max }}" value="{{ min + (max-min)/2 }}" step="{{ step }}" oninput="syncValues(this, '{{ attribute|replace(' ', '_')|lower }}-number')">
-                <input type="number" id="{{ attribute|replace(' ', '_')|lower }}-number" value="{{ min + (max-min)/2 }}" min="{{ min }}" max="{{ max }}" step="{{ step }}" oninput="syncValues(this, '{{ attribute|replace(' ', '_')|lower }}-slider')">
+                <label>Długość stopnia (mm):</label>
+                <input type="range" id="length-slider" name="Długość stopnia (mm)" min="500" max="2000" value="1000" step="10">
+                <input type="number" id="length-number" value="1000" min="500" max="2000" step="10">
             </div>
-            {% endfor %}
+            <div>
+                <label>Szerokość stopnia (mm):</label>
+                <input type="range" id="width-slider" name="Szerokość stopnia (mm)" min="100" max="1000" value="300" step="10">
+                <input type="number" id="width-number" value="300" min="100" max="1000" step="10">
+            </div>
+            <div>
+                <label>Wysokość stopnia (mm):</label>
+                <input type="range" id="height-slider" name="Wysokość stopnia (mm)" min="50" max="300" value="150" step="5">
+                <input type="number" id="height-number" value="150" min="50" max="300" step="5">
+            </div>
+            <div>
+                <label>Wysokość między stopniami (mm):</label>
+                <input type="range" id="spacing-slider" name="Wysokość między stopniami (mm)" min="100" max="400" value="200" step="5">
+                <input type="number" id="spacing-number" value="200" min="100" max="400" step="5">
+            </div>
+            <div>
+                <label>Ilość stopni:</label>
+                <input type="range" id="steps-slider" name="Ilość stopni" min="1" max="20" value="10" step="1">
+                <input type="number" id="steps-number" value="10" min="1" max="20" step="1">
+            </div>
             <button type="submit" id="submitButton">Stwórz!</button>
         </form>
     </div>
@@ -20,10 +38,24 @@
 
 {% block scripts %}
 <script>
-    function syncValues(source, targetId) {
-        var target = document.getElementById(targetId);
-        target.value = source.value;
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+        syncInputs('length-slider', 'length-number');
+        syncInputs('width-slider', 'width-number');
+        syncInputs('height-slider', 'height-number');
+        syncInputs('spacing-slider', 'spacing-number');
+        syncInputs('steps-slider', 'steps-number');
+    });
 
+    function syncInputs(sliderId, numberId) {
+        var slider = document.getElementById(sliderId);
+        var numberInput = document.getElementById(numberId);
+
+        slider.oninput = function() {
+            numberInput.value = slider.value;
+        };
+        numberInput.oninput = function() {
+            slider.value = numberInput.value;
+        };
+    }
 </script>
 {% endblock %}
