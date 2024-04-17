@@ -5,25 +5,136 @@
     <div class="form-container-background">
         <h1>{% block title %}Generator Schodów{% endblock %}</h1>
         <form method="post" onsubmit="return validateForm()">
-            <label for="length-slider">Długość stopnia (mm): <span id="length-output">1000</span></label>
-            <input type="range" id="length-slider" name="Długość stopnia (mm)" min="500" max="2000" value="1000" step="10" oninput="updateOutput('length-output', this.value)">
-            <label for="width-slider">Szerokość stopnia (mm): <span id="width-output">300</span></label>
-            <input type="range" id="width-slider" name="Szerokość stopnia (mm)" min="100" max="1000" value="300" step="10" oninput="updateOutput('width-output', this.value)">
-            <label for="height-slider">Wysokość stopnia (mm): <span id="height-output">150</span></label>
-            <input type="range" id="height-slider" name="Wysokość stopnia (mm)" min="50" max="300" value="150" step="5" oninput="updateOutput('height-output', this.value)">
-            <label for="spacing-slider">Wysokość między stopniami (mm): <span id="spacing-output">200</span></label>
-            <input type="range" id="spacing-slider" name="Wysokość między stopniami (mm)" min="100" max="400" value="200" step="5" oninput="updateOutput('spacing-output', this.value)">
-            <label for="steps-slider">Ilość stopni: <span id="steps-output">10</span></label>
-            <input type="range" id="steps-slider" name="Ilość stopni" min="1" max="20" value="10" step="1" oninput="updateOutput('steps-output', this.value)">
+            <div>
+                <label>Długość stopnia (mm):</label>
+                <input type="range" id="length-slider" name="Długość stopnia (mm)" min="500" max="2000" value="1000" step="10">
+                <input type="number" id="length-number" value="1000" min="500" max="2000" step="10">
+            </div>
+            <div>
+                <label>Szerokość stopnia (mm):</label>
+                <input type="range" id="width-slider" name="Szerokość stopnia (mm)" min="100" max="1000" value="300" step="10">
+                <input type="number" id="width-number" value="300" min="100" max="1000" step="10">
+            </div>
+            <div>
+                <label>Wysokość stopnia (mm):</label>
+                <input type="range" id="height-slider" name="Wysokość stopnia (mm)" min="50" max="300" value="150" step="5">
+                <input type="number" id="height-number" value="150" min="50" max="300" step="5">
+            </div>
+            <div>
+                <label>Wysokość między stopniami (mm):</label>
+                <input type="range" id="spacing-slider" name="Wysokość między stopniami (mm)" min="100" max="400" value="200" step="5">
+                <input type="number" id="spacing-number" value="200" min="100" max="400" step="5">
+            </div>
+            <div>
+                <label>Ilość stopni:</label>
+                <input type="range" id="steps-slider" name="Ilość stopni" min="1" max="20" value="10" step="1">
+                <input type="number" id="steps-number" value="10" min="1" max="20" step="1">
+            </div>
             <button type="submit" id="submitButton">Stwórz!</button>
         </form>
     </div>
 </div>
-
 <script>
-    function updateOutput(id, value) {
-        document.getElementById(id).textContent = value;
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+        syncInputs('length-slider', 'length-number');
+        syncInputs('width-slider', 'width-number');
+        syncInputs('height-slider', 'height-number');
+        syncInputs('spacing-slider', 'spacing-number');
+        syncInputs('steps-slider', 'steps-number');
+    });
 
+    function syncInputs(sliderId, numberId) {
+        var slider = document.getElementById(sliderId);
+        var numberInput = document.getElementById(numberId);
+
+        slider.oninput = function() {
+            numberInput.value = slider.value;
+        };
+        numberInput.oninput = function() {
+            slider.value = numberInput.value;
+        };
+    }
+    function validateForm() {
+            let inputs = document.querySelectorAll('input[type="text"]');
+            let button = document.getElementById('submitButton');
+
+            for (let i = 0; i < inputs.length; i++) {
+                let inputValue = inputs[i].value.trim();
+
+                if (inputValue === '') {
+                    alert('Wprowadź wszystkie wymagane dane!');
+                    return false;
+                }
+
+                if (!/^\d+$/.test(inputValue) || parseInt(inputValue) <= 0) {
+                    alert('Wprowadź liczbę całkowitą nieujemną różną od zera!');
+                    return false;
+                }
+
+                switch (inputs[i].name) {
+                    case 'Długość stopnia (mm)':
+                        if (parseInt(inputValue) >= 5000) {
+                            alert('Długość stopnia musi być mniejsza niż 5000!');
+                            return false;
+                        }
+                        break;
+                    case 'Szerokość stopnia (mm)':
+                        if (parseInt(inputValue) >= 5000) {
+                            alert('Szerokość stopnia musi być mniejsza niż 5000!');
+                            return false;
+                        }
+                        break;
+                    case 'Wysokość stopnia (mm)':
+                        if (parseInt(inputValue) >= 1000) {
+                            alert('Wysokość stopnia musi być mniejsza niż 1000!');
+                            return false;
+                        }
+                        break;
+                    case 'Wysokość między stopniami (mm)':
+                        if (parseInt(inputValue) >= 500) {
+                            alert('Wysokość między stopniami musi być mniejsza niż 500!');
+                            return false;
+                        }
+                        break;
+                    case 'Ilość stopni':
+                        if (parseInt(inputValue) >= 30) {
+                            alert('Ilość stopni musi być mniejsza niż 30!');
+                            return false;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            button.disabled = true;
+
+            setTimeout(function () {
+                button.disabled = false;
+            }, 15000);
+
+            return true;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+    var form = document.querySelector('form');
+    var button = document.getElementById('submitButton');
+    var loadingIcon = document.getElementById('loadingIcon');
+
+    button.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        if (validateForm()) {
+            showLoadingIcon();
+            form.submit();
+        }
+    });
+
+    function showLoadingIcon() {
+        loadingIcon.style.display = 'block';
+    }
+});
 </script>
 {% endblock %}
+
+
