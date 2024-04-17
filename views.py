@@ -9,11 +9,15 @@ import logging
 freecad_path = "/schody3d/FreeCadapp/freecad_appimage/squashfs-root/usr/bin/freecadcmd"
 views = Blueprint(__name__, "views")
 
+
 def generate_session_id():
-    first_digit = secrets.randbelow(9) + 1
-    rest_digits = ''.join(str(secrets.randbelow(10)) for _ in range(15))
-    session_id = str(first_digit) + rest_digits
-    return session_id
+    while True:
+        first_digit = secrets.randbelow(9) + 1
+        rest_digits = ''.join(str(secrets.randbelow(10)) for _ in range(15))
+        session_id = str(first_digit) + rest_digits
+        existing_id = fetch_data("SELECT session_id FROM Stairs WHERE session_id = ?", (session_id,))
+        if not existing_id:
+            return session_id
 
 @views.route("/")
 def home():
