@@ -6,24 +6,24 @@
         <h1>{% block title %}Generator Schodów{% endblock %}</h1>
         <form method="post" onsubmit="return validateForm()">
             <label for="length-slider">Długość stopnia (mm):</label>
-            <input type="range" id="length-slider" name="Długość stopnia (mm)" min="500" max="2000" value="1000" step="10">
-            <input type="number" id="length-number" value="1000" min="500" max="2000" step="10" oninput="syncSlider('length-slider', this.value)">
+            <input type="range" id="length-slider" name="Długość stopnia (mm)" min="500" max="2000" value="1000" step="10" oninput="updateNumber('length-slider', 'length-number')">
+            <input type="number" id="length-number" value="1000" min="500" max="2000" step="10" oninput="updateSlider('length-slider', 'length-number')">
 
             <label for="width-slider">Szerokość stopnia (mm):</label>
-            <input type="range" id="width-slider" name="Szerokość stopnia (mm)" min="100" max="1000" value="300" step="10">
-            <input type="number" id="width-number" value="300" min="100" max="1000" step="10" oninput="syncSlider('width-slider', this.value)">
+            <input type="range" id="width-slider" name="Szerokość stopnia (mm)" min="100" max="1000" value="300" step="10" oninput="updateNumber('width-slider', 'width-number')">
+            <input type="number" id="width-number" value="300" min="100" max="1000" step="10" oninput="updateSlider('width-slider', 'width-number')">
 
             <label for="height-slider">Wysokość stopnia (mm):</label>
-            <input type="range" id="height-slider" name="Wysokość stopnia (mm)" min="50" max="300" value="150" step="5">
-            <input type="number" id="height-number" value="150" min="50" max="300" step="5" oninput="syncSlider('height-slider', this.value)">
+            <input type="range" id="height-slider" name="Wysokość stopnia (mm)" min="50" max="300" value="150" step="5" oninput="updateNumber('height-slider', 'height-number')">
+            <input type="number" id="height-number" value="150" min="50" max="300" step="5" oninput="updateSlider('height-slider', 'height-number')">
 
             <label for="spacing-slider">Wysokość między stopniami (mm):</label>
-            <input type="range" id="spacing-slider" name="Wysokość między stopniami (mm)" min="100" max="400" value="200" step="5">
-            <input type="number" id="spacing-number" value="200" min="100" max="400" step="5" oninput="syncSlider('spacing-slider', this.value)">
+            <input type="range" id="spacing-slider" name="Wysokość między stopniami (mm)" min="100" max="400" value="200" step="5" oninput="updateNumber('spacing-slider', 'spacing-number')">
+            <input type="number" id="spacing-number" value="200" min="100" max="400" step="5" oninput="updateSlider('spacing-slider', 'spacing-number')">
 
             <label for="steps-slider">Ilość stopni:</label>
-            <input type="range" id="steps-slider" name="Ilość stopni" min="1" max="20" value="10" step="1">
-            <input type="number" id="steps-number" value="10" min="1" max="20" step="1" oninput="syncSlider('steps-slider', this.value)">
+            <input type="range" id="steps-slider" name="Ilość stopni" min="1" max="20" value="10" step="1" oninput="updateNumber('steps-slider', 'steps-number')">
+            <input type="number" id="steps-number" value="10" min="1" max="20" step="1" oninput="updateSlider('steps-slider', 'steps-number')">
 
             <button type="submit" id="submitButton">Stwórz!</button>
         </form>
@@ -33,19 +33,17 @@
 
 {% block scripts %}
 <script>
-    document.querySelectorAll('input[type=range]').forEach(item => {
-        item.oninput = function() {
-            document.getElementById(this.id + '-number').value = this.value;
-        }
-    });
-
-    function syncSlider(sliderId, value) {
-        document.getElementById(sliderId).value = value;
+    function updateNumber(sliderId, numberId) {
+        var slider = document.getElementById(sliderId);
+        var number = document.getElementById(numberId);
+        number.value = slider.value;
     }
 
-    function validateForm() {
-        // Tu możesz dodać walidację formularza, jeśli jest potrzebna
-        return true;
+    function updateSlider(sliderId, numberId) {
+        var slider = document.getElementById(sliderId);
+        var number = document.getElementById(numberId);
+        slider.value = number.value;
     }
+
 </script>
 {% endblock %}
