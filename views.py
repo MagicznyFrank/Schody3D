@@ -10,7 +10,10 @@ freecad_path = "/schody3d/FreeCadapp/freecad_appimage/squashfs-root/usr/bin/free
 views = Blueprint(__name__, "views")
 
 def generate_session_id():
-    return ''.join(str(secrets.randbelow(10)) for _ in range(16))
+    first_digit = secrets.randbelow(9) + 1
+    rest_digits = ''.join(str(secrets.randbelow(10)) for _ in range(15))
+    session_id = str(first_digit) + rest_digits
+    return session_id
 
 @views.route("/")
 def home():
