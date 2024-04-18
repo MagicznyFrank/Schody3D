@@ -1,39 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="form-container">
-    <div class="form-container-background">
-        <h1>{% block title %}Generator Schodów{% endblock %}</h1>
-        <form method="post" onsubmit="return validateForm()">
-            <div>
-                <label>Długość stopnia (mm):</label>
-                <input type="range" id="length-slider" name="Długość stopnia (mm)" min="500" max="4000" value="2000" step="10">
-                <input type="number" id="length-number" value="2000" min="500" max="4000" step="10">
-            </div>
-            <div>
-                <label>Szerokość stopnia (mm):</label>
-                <input type="range" id="width-slider" name="Szerokość stopnia (mm)" min="100" max="1000" value="600" step="10">
-                <input type="number" id="width-number" value="600" min="100" max="1000" step="10">
-            </div>
-            <div>
-                <label>Wysokość stopnia (mm):</label>
-                <input type="range" id="height-slider" name="Wysokość stopnia (mm)" min="50" max="300" value="90" step="5">
-                <input type="number" id="height-number" value="90" min="50" max="300" step="5">
-            </div>
-            <div>
-                <label>Wysokość między stopniami (mm):</label>
-                <input type="range" id="spacing-slider" name="Wysokość między stopniami (mm)" min="100" max="400" value="250" step="5">
-                <input type="number" id="spacing-number" value="250" min="100" max="400" step="5">
-            </div>
-            <div>
-                <label>Ilość stopni:</label>
-                <input type="range" id="steps-slider" name="Ilość stopni" min="1" max="20" value="10" step="1">
-                <input type="number" id="steps-number" value="10" min="1" max="20" step="1">
-            </div>
-            <button type="submit" id="submitButton">Stwórz!</button>
-        </form>
-    </div>
+<div class="form-container-background">
+    <h1>{% block title %}Generator Schodów{% endblock %}</h1>
+    <form method="post" onsubmit="return validateForm()">
+        <div class="input-group">
+            <label for="length">Długość stopnia (mm):</label>
+            <input type="range" id="length-slider" name="Długość stopnia (mm)" min="500" max="4000" value="2000" step="10">
+            <input type="number" id="length-number" value="2000" min="500" max="4000" step="10">
+        </div>
+        <div class="input-group">
+            <label for="width">Szerokość stopnia (mm):</label>
+            <input type="range" id="width-slider" name="Szerokość stopnia (mm)" min="100" max="1000" value="600" step="10">
+            <input type="number" id="width-number" value="600" min="100" max="1000" step="10">
+        </div>
+        <div class="input-group">
+            <label for="height">Wysokość stopnia (mm):</label>
+            <input type="range" id="height-slider" name="Wysokość stopnia (mm)" min="50" max="300" value="90" step="5">
+            <input type="number" id="height-number" value="90" min="50" max="300" step="5">
+        </div>
+        <div class="input-group">
+            <label for="spacing">Wysokość między stopniami (mm):</label>
+            <input type="range" id="spacing-slider" name="Wysokość między stopniami (mm)" min="100" max="400" value="250" step="5">
+            <input type="number" id="spacing-number" value="250" min="100" max="400" step="5">
+        </div>
+        <div class="input-group">
+            <label for="steps">Ilość stopni:</label>
+            <input type="range" id="steps-slider" name="Ilość stopni" min="1" max="20" value="10" step="1">
+            <input type="number" id="steps-number" value="10" min="1" max="20" step="1">
+        </div>
+        <button type="submit" id="submitButton">Stwórz!</button>
+    </form>
 </div>
+
 <script>
      function validateForm() {
     let inputs = document.querySelectorAll('input[type="number"]');

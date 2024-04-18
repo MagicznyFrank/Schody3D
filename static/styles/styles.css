@@ -252,6 +252,7 @@ td a {
 td a:hover {
     color: #d64161;
 }
+/* Stylowanie sliderów i pól numerycznych */
 input[type="range"],
 input[type="number"] {
     width: 100%;
@@ -316,6 +317,25 @@ input:focus {
     margin-bottom: 5px;
     color: #d64161;
     font-size: 1.1em;
+}
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    color: #d64161;
+    font-size: 1.1em;
+    margin-right: 10px;
+}
+
+.input-group input[type="range"] {
+    width: calc(70% - 10px);
+}
+
+.input-group input[type="number"] {
+    width: calc(30% - 10px);
 }
 
 .form-container {
