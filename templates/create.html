@@ -41,50 +41,17 @@
 
     for (let i = 0; i < inputs.length; i++) {
         let inputValue = inputs[i].value.trim();
+        let min = parseInt(inputs[i].min);
+        let max = parseInt(inputs[i].max);
 
         if (inputValue === '') {
             alert('Wprowadź wszystkie wymagane dane!');
             return false;
         }
 
-        if (!/^\d+$/.test(inputValue) || parseInt(inputValue) <= 0) {
-            alert('Wprowadź liczbę całkowitą nieujemną różną od zera!');
+        if (!/^\d+$/.test(inputValue) || parseInt(inputValue) < min || parseInt(inputValue) > max) {
+            alert('Wprowadź wartość między ' + min + ' a ' + max + '!');
             return false;
-        }
-
-        switch (inputs[i].name) {
-            case 'Długość stopnia (mm)':
-                if (parseInt(inputValue) >= 5000) {
-                    alert('Długość stopnia musi być mniejsza niż 5000!');
-                    return false;
-                }
-                break;
-            case 'Szerokość stopnia (mm)':
-                if (parseInt(inputValue) >= 5000) {
-                    alert('Szerokość stopnia musi być mniejsza niż 5000!');
-                    return false;
-                }
-                break;
-            case 'Wysokość stopnia (mm)':
-                if (parseInt(inputValue) >= 1000) {
-                    alert('Wysokość stopnia musi być mniejsza niż 1000!');
-                    return false;
-                }
-                break;
-            case 'Wysokość między stopniami (mm)':
-                if (parseInt(inputValue) >= 500) {
-                    alert('Wysokość między stopniami musi być mniejsza niż 500!');
-                    return false;
-                }
-                break;
-            case 'Ilość stopni':
-                if (parseInt(inputValue) >= 30) {
-                    alert('Ilość stopni musi być mniejsza niż 30!');
-                    return false;
-                }
-                break;
-            default:
-                break;
         }
     }
 
