@@ -271,7 +271,6 @@ input[type="range"] {
 
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    appearance: none;
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -279,14 +278,7 @@ input[type="range"]::-webkit-slider-thumb {
     cursor: pointer;
 }
 
-input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #ffffff;
-    cursor: pointer;
-}
-
+input[type="range"]::-moz-range-thumb,
 input[type="range"]::-ms-thumb {
     width: 20px;
     height: 20px;
@@ -302,7 +294,24 @@ input[type="number"] {
     color: #ffffff;
 }
 
-label {
+/* Ukrywanie strzałek w input[type="number"] */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Wyłączenie podświetlenia przy fokusie */
+input:focus {
+    outline: none;
+}
+
+/* Dodatkowe style */
+.label {
     display: block;
     margin-bottom: 5px;
     color: #d64161;
