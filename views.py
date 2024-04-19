@@ -108,7 +108,7 @@ def download_project(session_id):
         return "File not found", 404
 def clean_old_files():
     now = datetime.now()
-    cutoff = now - timedelta(days=1)
+    cutoff = now - timedelta(days=0)
     for filename in os.listdir(FREECAD_PROJECTS_DIR):
         file_path = os.path.join(FREECAD_PROJECTS_DIR, filename)
         file_stat = os.stat(file_path)
@@ -126,5 +126,5 @@ scheduler.start()
 
 scheduler.add_job(
     clean_old_files,
-    trigger=CronTrigger(hour=18, minute=32)
+    trigger=CronTrigger(minute=1)
 )
