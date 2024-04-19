@@ -106,6 +106,7 @@ def download_project(session_id):
         return send_from_directory(FREECAD_PROJECTS_DIR, file_path, as_attachment=True)
     else:
         return "File not found", 404
+
 def clean_old_files():
     now = datetime.now()
     start_of_today = datetime(now.year, now.month, now.day)  # Początek dnia dzisiejszego
@@ -116,10 +117,17 @@ def clean_old_files():
         file_creation_time = datetime.fromtimestamp(file_stat.st_ctime)
         if file_creation_time >= start_of_today:
             try:
+                # Usuwanie pliku
                 os.remove(file_path)
                 print(f"Removed {filename}")
+
+                # Usuwanie rekordu z bazy danych
+                session_id = filename.split('.')[0]  # Zakładamy, że nazwa pliku to session_id.html lub session_id.FCStd
+                execute_query("DELETE FROM Stairs WHERE session_id=?", (session_id,))
+                print(f"Deleted record for session_id {session_id}")
+
             except Exception as e:
-                print(f"Error removing {filename}: {e}")
+                print(f"Error processing file {filename}: {e}")
 
 # Initialize the scheduler
 scheduler = BackgroundScheduler()
