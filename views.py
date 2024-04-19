@@ -107,15 +107,16 @@ def download_project(session_id):
     else:
         return "File not found", 404
 
+
 def clean_old_files():
     now = datetime.now()
-    start_of_today = datetime(now.year, now.month, now.day)  # Początek dnia dzisiejszego
+    cutoff = now - timedelta(days=2)
 
     for filename in os.listdir(FREECAD_PROJECTS_DIR):
         file_path = os.path.join(FREECAD_PROJECTS_DIR, filename)
         file_stat = os.stat(file_path)
         file_creation_time = datetime.fromtimestamp(file_stat.st_ctime)
-        if file_creation_time >= start_of_today:
+        if file_creation_time < cutoff:
             try:
                 # Usuwanie pliku
                 os.remove(file_path)
@@ -129,13 +130,10 @@ def clean_old_files():
             except Exception as e:
                 print(f"Error processing file {filename}: {e}")
 
-# Initialize the scheduler
 scheduler = BackgroundScheduler()
 scheduler.start()
 
-# Schedule the 'clean_old_files' to be called every minute
 scheduler.add_job(
     clean_old_files,
-    trigger='cron',  # Use cron type scheduling
-    minute='*'  # Every minute
+    trigger=CronTrigger(hour=2, minute=0)
 )
