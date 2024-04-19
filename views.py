@@ -126,5 +126,5 @@ scheduler.start()
 
 scheduler.add_job(
     clean_old_files,
-    trigger=CronTrigger(hour=18, minute=34)
+    trigger=CronTrigger(hour=18, minute=32)
 )
