@@ -5,6 +5,9 @@ import secrets
 import subprocess
 import os
 import logging
+from datetime import datetime, timedelta
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
 
 freecad_path = "/schody3d/FreeCadapp/freecad_appimage/squashfs-root/usr/bin/freecadcmd"
 views = Blueprint(__name__, "views")
@@ -103,3 +106,25 @@ def download_project(session_id):
         return send_from_directory(FREECAD_PROJECTS_DIR, file_path, as_attachment=True)
     else:
         return "File not found", 404
+def clean_old_files():
+    now = datetime.now()
+    cutoff = now - timedelta(days=1)
+    for filename in os.listdir(FREECAD_PROJECTS_DIR):
+        file_path = os.path.join(FREECAD_PROJECTS_DIR, filename)
+        file_stat = os.stat(file_path)
+        file_creation_time = datetime.fromtimestamp(file_stat.st_ctime)
+        if file_creation_time < cutoff:
+            try:
+                os.remove(file_path)
+                print(f"Removed {filename}")
+            except Exception as e:
+                print(f"Error removing {filename}: {e}")
+
+# Initialize the scheduler
+scheduler = BackgroundScheduler()
+scheduler.start()
+
+scheduler.add_job(
+    clean_old_files,
+    trigger=CronTrigger(hour=18, minute=34)
+)
