@@ -43,7 +43,17 @@ def admin():
 
 @views.route('/delete/<session_id>', methods=['POST'])
 def delete_stairs(session_id):
+
     execute_query("DELETE FROM Stairs WHERE session_id=?", (session_id,))
+
+    try:
+        os.remove(os.path.join(FREECAD_PROJECTS_DIR, f"{session_id}.html"))
+        os.remove(os.path.join(FREECAD_PROJECTS_DIR, f"{session_id}.FCStd"))
+    except FileNotFoundError:
+        logging.error(f"Files for session_id {session_id} not found.")
+    except Exception as e:
+        logging.error(f"Error deleting files for session_id {session_id}: {str(e)}")
+
     return redirect(url_for("views.admin"))
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
