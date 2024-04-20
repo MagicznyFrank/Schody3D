@@ -49,8 +49,14 @@ celery = make_celery(app)
 
 @celery.task
 def generate_project(session_id, length, width, height, step_height, num_steps):
-    subprocess.run([freecad_path, '-c', 'FreeCadScripts/Schody_Proste.FCMacro', session_id, str(length), str(width), str(height), str(step_height), str(num_steps)])
-    print("Project generated:", session_id)
+    try:
+        # Logika uruchamiania skryptu FreeCAD
+        result = subprocess.run([freecad_path, '-c', 'FreeCadScripts/Schody_Proste.FCMacro', session_id, str(length), str(width), str(height), str(step_height), str(num_steps)], check=True)
+        print("Project generated:", session_id)
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred: {e}")
+        raise e
+    return f"Project {session_id} generated successfully."
 
 @views.route("/")
 def home():
