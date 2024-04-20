@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, send_from_directory
+from flask import Flask,Blueprint, render_template, request, redirect, url_for, send_from_directory
 from database import execute_query, fetch_data
 from datetime import date
 import secrets
@@ -8,6 +8,7 @@ import logging
 from datetime import datetime, timedelta
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
+from celery import Celery
 
 freecad_path = "/schody3d/FreeCadapp/freecad_appimage/squashfs-root/usr/bin/freecadcmd"
 views = Blueprint(__name__, "views")
@@ -21,6 +22,35 @@ def generate_session_id():
         existing_id = fetch_data("SELECT session_id FROM Stairs WHERE session_id = ?", (session_id,))
         if not existing_id:
             return session_id
+
+def make_celery(app):
+    celery = Celery(
+        app.import_name,
+        backend=app.config['CELERY_RESULT_BACKEND'],
+        broker=app.config['CELERY_BROKER_URL']
+    )
+    celery.conf.update(app.config)
+
+    class ContextTask(celery.Task):
+        def __call__(self, *args, **kwargs):
+            with app.app_context():
+                return self.run(*args, **kwargs)
+
+    celery.Task = ContextTask
+    return celery
+
+app = Flask(__name__)
+app.config.update(
+    CELERY_BROKER_URL='redis://localhost:6379/0',
+    CELERY_RESULT_BACKEND='redis://localhost:6379/0'
+)
+
+celery = make_celery(app)
+
+@celery.task
+def generate_project(session_id, length, width, height, step_height, num_steps):
+    subprocess.run([freecad_path, '-c', 'FreeCadScripts/Schody_Proste.FCMacro', session_id, str(length), str(width), str(height), str(step_height), str(num_steps)])
+    print("Project generated:", session_id)
 
 @views.route("/")
 def home():
@@ -64,12 +94,12 @@ FREECAD_PROJECTS_DIR = os.path.join(BASE_DIR, 'FreeCadProjects')
 
 @views.route('/projects/<session_id>')
 def serve_project(session_id):
-    """Serve the HTML file for a given session."""
     file_path = f"{session_id}.html"
     if os.path.exists(os.path.join(FREECAD_PROJECTS_DIR, file_path)):
         return send_from_directory(FREECAD_PROJECTS_DIR, file_path)
     else:
         return "File not found", 404
+
 
 @views.route('/create/', methods=['GET', 'POST'])
 def create():
@@ -88,9 +118,12 @@ def create():
         except ValueError:
             return render_template('error.html', error_message="Invalid input. Please enter numeric values.")
         session_id = generate_session_id()
-        execute_query("INSERT INTO Stairs (session_id, length, width, height, step_height, number_of_steps, Type, generated_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                      (session_id, length, width, height, step_height, num_steps, "proste", date.today()))
-        subprocess.run([freecad_path, '-c', 'FreeCadScripts/Schody_Proste.FCMacro', session_id, str(length), str(width), str(height), str(step_height), str(num_steps)])
+        execute_query(
+            "INSERT INTO Stairs (session_id, length, width, height, step_height, number_of_steps, Type, generated_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            (session_id, length, width, height, step_height, num_steps, "proste", date.today()))
+
+        generate_project.delay(session_id, length, width, height, step_height, num_steps)
+
         return redirect(url_for('views.result', session_id=session_id))
     return render_template('create.html')
 
