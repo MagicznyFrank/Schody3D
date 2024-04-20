@@ -176,3 +176,11 @@ scheduler.add_job(
     clean_old_files,
     trigger=CronTrigger(hour=2, minute=0)
 )
+@views.route('/check_file/<session_id>')
+def check_file(session_id):
+    file_path = os.path.join(FREECAD_PROJECTS_DIR, f"{session_id}.html")
+    if os.path.exists(file_path):
+        return {"exists": True}, 200
+    else:
+        return {"exists": False}, 404
+
