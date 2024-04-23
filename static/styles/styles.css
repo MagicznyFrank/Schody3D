@@ -304,23 +304,22 @@ td a:hover {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: #0c162e;
+    background: #1a304e;
     cursor: pointer;
-    box-shadow: 0 0 4px #000;
+    box-shadow: 0 0 4px #ffffff;
 }
 .input-group input[type="range"]::-moz-range-thumb {
-    width: 20px; /* Szerokość kciuka */
-    height: 20px; /* Wysokość kciuka */
-    border: none; /* Bez obramowania */
-    border-radius: 50%; /* Okrągły kształt */
-    background: #0c162e; /* Tło kciuka */
-    cursor: pointer; /* Kursor w formie wskaźnika */
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    background: #0c162e;
+    cursor: pointer;
 }
 
-/* Stylowanie tracku (ścieżki) dla Mozilli Firefox */
 .input-group input[type="range"]::-moz-range-track {
-    width: 100%; /* Szerokość tracku */
-    height: 8px; /* Wysokość tracku */
-    background: #d64161; /* Tło tracku */
-    border-radius: 5px; /* Zaokrąglenie krawędzi */
+    width: 100%;
+    height: 8px;
+    background: #d64161;
+    border-radius: 5px;
 }
