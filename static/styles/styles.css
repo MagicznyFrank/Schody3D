@@ -161,6 +161,7 @@
             width: 35%;
             margin: 0 auto;
             margin-top: 80px;
+            margin-bottom: 80px
         }
 
         .form-container-background {
@@ -254,7 +255,7 @@ td a:hover {
 }
 
 .input-group {
-    flex: 1 1 40%; /* Flex grow, flex shrink, flex basis */
+    flex: 1 1 40%;
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -263,7 +264,7 @@ td a:hover {
 
 .input-group label {
     margin-bottom: 5px;
-    color: #fff; /* Biały tekst */
+    color: #fff;
 }
 
 .input-group input[type="range"],
