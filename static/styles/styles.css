@@ -315,6 +315,7 @@ td a:hover {
     border-radius: 50%;
     background: #0c162e;
     cursor: pointer;
+    box-shadow: 0 0 4px #ffffff;
 }
 
 .input-group input[type="range"]::-moz-range-track {
