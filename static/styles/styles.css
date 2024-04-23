@@ -311,7 +311,8 @@ td a:hover {
 .input-group input[type="range"]::-moz-range-thumb {
     width: 20px;
     height: 20px;
-    border: none;
+    border: 2px;
+    border-color: #FFFFFF;
     border-radius: 50%;
     background: #0c162e;
     cursor: pointer;
