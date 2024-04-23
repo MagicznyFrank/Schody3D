@@ -15,7 +15,7 @@
                     if (data.exists) {
                         window.open("{{ url_for('views.serve_project', session_id=session_id) }}", "_blank");
                     } else {
-                        setTimeout(checkAndOpen, 1000);
+                        setTimeout(checkAndOpen, 500);
                     }
                 });
         }

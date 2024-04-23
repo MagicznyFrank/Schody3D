@@ -113,7 +113,7 @@
                 box-sizing: border-box;
                 background-color: transparent;
                 border: none;
-                border-bottom: 3px solid #d64161; /* Dodajemy border tylko od dołu */
+                border-bottom: 3px solid #d64161;
                 border-radius: 3px;
             }
         input[type="text"]:focus,
@@ -251,4 +251,54 @@ td a {
 
 td a:hover {
     color: #d64161;
+}
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container-background {
+    background: #0c162e;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.input-group {
+    flex: 1 1 40%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.input-group input[type="range"],
+.input-group input[type="number"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#submitButton {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #d64161;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submitButton:hover {
+    background-color: #b5364c;
 }
