@@ -267,6 +267,12 @@ td a:hover {
     color: #fff;
 }
 
+.input-group input[type="range"],
+.input-group input[type="number"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 #submitButton {
     width: 100%;
     padding: 10px;
@@ -301,4 +307,20 @@ td a:hover {
     background: #0c162e;
     cursor: pointer;
     box-shadow: 0 0 4px #000;
+}
+.input-group input[type="range"]::-moz-range-thumb {
+    width: 20px; /* Szerokość kciuka */
+    height: 20px; /* Wysokość kciuka */
+    border: none; /* Bez obramowania */
+    border-radius: 50%; /* Okrągły kształt */
+    background: #0c162e; /* Tło kciuka */
+    cursor: pointer; /* Kursor w formie wskaźnika */
+}
+
+/* Stylowanie tracku (ścieżki) dla Mozilli Firefox */
+.input-group input[type="range"]::-moz-range-track {
+    width: 100%; /* Szerokość tracku */
+    height: 8px; /* Wysokość tracku */
+    background: #d64161; /* Tło tracku */
+    border-radius: 5px; /* Zaokrąglenie krawędzi */
 }
