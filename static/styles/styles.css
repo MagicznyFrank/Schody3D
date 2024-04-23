@@ -307,3 +307,10 @@ td a:hover {
     border: 2px solid #1a304e;
     cursor: pointer;
 }
+.input-group input[type="range"]::-moz-range-thumb {
+    width: 30px;
+    height: 18px;
+    background: #FFFFFF;
+    border: 2px solid #1a304e;
+    cursor: pointer;
+}
