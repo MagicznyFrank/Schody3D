@@ -295,26 +295,17 @@ td a:hover {
     background: #d64161;
     outline: none;
     opacity: 0.7;
-    -webkit-transition: .2s;
     transition: opacity .2s;
 }
+
 .input-group input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: #1a304e;
-    cursor: pointer;
-    box-shadow: 0 0 4px #ffffff;
-}
-.input-group input[type="range"]::-moz-range-thumb {
     width: 20px;
     height: 20px;
-    border: 2px;
-    border-color: #FFFFFF;
     border-radius: 50%;
-    background: #1a304e;
+    background: #291747;
+    border: 2px solid #ffffff;
     cursor: pointer;
     box-shadow: 0 0 4px #ffffff;
 }
