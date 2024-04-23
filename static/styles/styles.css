@@ -304,7 +304,6 @@ td a:hover {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border-color: #FFFFFF;
     background: #1a304e;
     cursor: pointer;
     box-shadow: 0 0 4px #ffffff;
@@ -312,10 +311,9 @@ td a:hover {
 .input-group input[type="range"]::-moz-range-thumb {
     width: 20px;
     height: 20px;
-    border: 2px;
-    border-color: #FFFFFF;
+    border: none;
     border-radius: 50%;
-    background: #0c162e;
+    background: #1a304e;
     cursor: pointer;
     box-shadow: 0 0 4px #ffffff;
 }
@@ -325,5 +323,4 @@ td a:hover {
     height: 8px;
     background: #d64161;
     border-radius: 5px;
-    border-color: #FFFFFF;
 }
