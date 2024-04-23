@@ -304,7 +304,7 @@ td a:hover {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #291747;
-    border: 3px solid #ffffff;
+    background: #FFFFFF;
+    border: 3px solid #291747;
     cursor: pointer;
 }
