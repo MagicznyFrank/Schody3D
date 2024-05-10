@@ -330,3 +330,19 @@ td a:hover {
 .form-container button:hover {
     background-color: #d64161;
 }
+.form-container a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #d64161;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.form-container a:hover {
+    background-color: #ffffff;
+    color: #d64161;
+}
