@@ -5,23 +5,33 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Generowanie schodów zakończone sukcesem!</h1>
-    <p>Plik jest przygotowywany do otwarcia...</p>
-    <script>
-        function checkAndOpen() {
-            fetch("{{ url_for('views.check_file', session_id=session_id) }}")
-                .then(response => response.json())
-                .then(data => {
-                    if (data.exists) {
-                        window.open("{{ url_for('views.serve_project', session_id=session_id) }}", "_blank");
-                    } else {
-                        setTimeout(checkAndOpen, 500);
-                    }
-                });
-        }
+<div class="form-container">
+    <div class="form-container-background">
+        <h1>Generowanie schodów zakończone sukcesem!</h1>
+        <p id="statusMessage">Plik jest przygotowywany do otwarcia...</p>
+        <button id="openButton" style="display: none;" onclick="openProject()">Otwórz Projekt</button>
+        <script>
+            function checkAndOpen() {
+                fetch("{{ url_for('views.check_file', session_id=session_id) }}")
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.exists) {
+                            document.getElementById('statusMessage').innerText = "Plik gotowy do otwarcia!";
+                            document.getElementById('openButton').style.display = 'block';
+                        } else {
+                            setTimeout(checkAndOpen, 100);
+                        }
+                    });
+            }
 
-        window.onload = checkAndOpen;
-    </script>
-    <p><a href="{{ url_for('views.download_project', session_id=session_id) }}" download>Pobierz projekt</a></p>
-    <p><a href="{{ url_for('views.home') }}">Powrót do strony głównej</a></p>
+            function openProject() {
+                window.open("{{ url_for('views.serve_project', session_id=session_id) }}", "_blank");
+            }
+
+            window.onload = checkAndOpen;
+        </script>
+        <p><a href="{{ url_for('views.download_project', session_id=session_id) }}" download>Pobierz projekt</a></p>
+        <p><a href="{{ url_for('views.home') }}">Powrót do strony głównej</a></p>
+    </div>
+</div>
 {% endblock %}
