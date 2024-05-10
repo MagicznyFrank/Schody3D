@@ -62,6 +62,10 @@ def generate_project(session_id, length, width, height, step_height, num_steps):
 def home():
     return render_template("index.html")
 
+@views.route("/kontakt/")
+def contact():
+    return render_template("contact.html")
+
 @views.route("/admin/")
 def admin():
     current_sort_by = request.args.get('sort', 'session_id')
