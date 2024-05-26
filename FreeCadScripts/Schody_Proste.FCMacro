@@ -17,21 +17,16 @@ def create_stairs(session_id, length, width, step_height, step_spacing, num_step
         App.newDocument(doc_name)
         doc = App.ActiveDocument
 
-        first_step = Part.makeBox(length, width, step_height)
-        doc.addObject("Part::Feature", "Step1").Shape = first_step
-        first_step.Placement.Base += App.Vector(0, -width, 0)
-
         substep_height = step_spacing + step_height
+        base_vector = App.Vector(0, -width, 0)
 
-        for i in range(2, int(num_steps) + 1):
-            step = first_step.copy()
-            step.Placement.Base += App.Vector(0, i * width, 0)
-            step.Placement.Base += App.Vector(0, 0, (i - 1) * (step_spacing + step_height))
+        for i in range(1, int(num_steps) + 1):
+            step = Part.makeBox(length, width, step_height)
+            step.Placement.Base = base_vector + App.Vector(0, (i - 1) * width, (i - 1) * (step_spacing + step_height))
             doc.addObject("Part::Feature", f"Step{i}").Shape = step
 
             substep = Part.makeBox(length, 50, substep_height)
-            substep.Placement.Base = step.Placement.Base
-            substep.Placement.Base += App.Vector(0, 0, -substep_height)
+            substep.Placement.Base = step.Placement.Base + App.Vector(0, 0, -substep_height)
             doc.addObject("Part::Feature", f"Substep{i}").Shape = substep
 
         doc.recompute()
