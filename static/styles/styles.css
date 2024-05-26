@@ -1,194 +1,213 @@
- html {
-            height: 100%;
-            background: linear-gradient(to bottom, #291747, #0c162e, #0c162e, #0e1a35);
-        }
+html {
+    height: 100%;
+    background: linear-gradient(to bottom, #291747, #0c162e, #0c162e, #0e1a35);
+}
 
-        body {
-            height: 100%;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-        }
+body {
+    height: 100%;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
 
-        nav {
-            background-color: #081423;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+nav {
+    background-color: #081423;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        nav a {
-            color: #d64161;
-            font-size: 1.5em;
-            text-decoration: none;
-            margin-left: 20px;
-        }
+nav a {
+    color: #d64161;
+    font-size: 1.5em;
+    text-decoration: none;
+    margin-left: 20px;
+}
 
-        nav a:hover {
-            color: #ffffff;
-        }
+nav a:hover {
+    color: #ffffff;
+}
 
-        .menu {
-            display: flex;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
+.menu {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
 
-        .menu-item {
-            margin-left: 20px;
-        }
+.menu-item {
+    margin-left: 20px;
+}
 
-        .submenu {
-            display: none;
-            position: absolute;
-            background-color: #081423;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            right: 0;
-            margin: 0;
-            padding: 0;
-        }
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: #081423;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    right: 0;
+    margin: 0;
+    padding: 0;
+}
 
-        .menu-item:hover .submenu {
-            display: block;
-        }
+.menu-item:hover .submenu {
+    display: block;
+}
 
-        .submenu-item {
-            padding: 10px;
-            text-decoration: none;
-            color: #d64161;
-            display: block;
-            text-align: center;
-        }
+.submenu-item {
+    padding: 10px;
+    text-decoration: none;
+    color: #d64161;
+    display: block;
+    text-align: center;
+}
 
-        .submenu-item:hover {
-            background-color: #1a304e;
-        }
+.submenu-item:hover {
+    background-color: #1a304e;
+}
 
-        hr {
-            border: none;
-            height: 1px;
-            background-color: #d64161;
-            box-shadow: 0 0 10px rgba(214, 97, 97, 0.8);
-            margin: 0;
-        }
+hr {
+    border: none;
+    height: 1px;
+    background-color: #d64161;
+    box-shadow: 0 0 10px rgba(214, 97, 97, 0.8);
+    margin: 0;
+}
 
-        .content {
-            padding: 20px;
-        }
+.content {
+    padding: 20px;
+}
 
-        .footer {
-            background-color: #081423;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+.footer {
+    background-color: #081423;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
-        form {
-            margin: 20px auto;
-            margin-bottom: 0px;
-            max-width: 500px;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+form {
+    margin: 20px auto;
+    margin-bottom: 0px;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-        label {
-            display: block;
-            margin-bottom: 10px;
-            color: #d64161;
-        }
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #d64161;
+}
 
-        input[type="text"],
-            textarea {
-                color: #ffffff;
-                width: 100%;
-                padding: 10px;
-                margin-bottom: 15px;
-                box-sizing: border-box;
-                background-color: transparent;
-                border: none;
-                border-bottom: 3px solid #d64161; /* Dodajemy border tylko od dołu */
-                border-radius: 3px;
-            }
-        input[type="text"]:focus,
-            textarea:focus {
-                outline: none;
-            }
+input[type="text"],
+textarea {
+    color: #ffffff;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid #d64161;
+    border-radius: 3px;
+}
 
-        input[type="submit"] {
-            background-color: #d64161;
-            color: #ffffff;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
+input[type="text"]:focus,
+textarea:focus {
+    outline: none;
+}
 
-        input[type="submit"]:hover {
-            background-color: #ffffff;
-            color: #d64161;
-        }
+input[type="submit"] {
+    background-color: #d64161;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
 
-        .submenu {
-            text-align: left;
-        }
+input[type="submit"]:hover {
+    background-color: #ffffff;
+    color: #d64161;
+}
 
-        .submenu-item {
-            display: block;
-            margin: 0 auto;
-        }
+.submenu {
+    text-align: left;
+}
 
-        nav a img {
-            height: 100px;
-            margin-right: 10px;
-        }
+.submenu-item {
+    display: block;
+    margin: 0 auto;
+}
 
-        .menu-item img {
-            height: 40px;
-            margin-right: 10px;
-        }
+nav a img {
+    height: 100px;
+    margin-right: 10px;
+}
 
-        .form-container {
-            background: linear-gradient(to bottom, #291747, #d64161);
-            padding: 5px;
-            border-radius: 5px;
-            width: 35%;
-            margin: 0 auto;
-            margin-top: 40px;
-            margin-bottom: 40px
-        }
+.menu-item img {
+    height: 40px;
+    margin-right: 10px;
+}
 
-        .form-container-background {
-            background: #0c162e;
-            padding: 2rem;
-        }
+.form-container {
+    background: linear-gradient(to bottom, #291747, #d64161);
+    padding: 5px;
+    border-radius: 5px;
+    width: 35%;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
 
-        .form-container h1 {
-            text-align: center;
-        }
+.form-container-background {
+    background: #0c162e;
+    padding: 2rem;
+}
 
-        .form-container button {
-            background-color: #081423;
-            color: #ffffff;
-            width: 200px;
-            padding: 15px 25px;
-            font-size: 1.2em;
-            border: 2px solid #d64161;
-            border-radius: 10px;
-            cursor: pointer;
-            display: block;
-            margin: 0 auto;
-        }
+.form-container h1 {
+    text-align: center;
+}
 
-        .form-container button:hover {
-            background-color: #d64161;
-        }
+.form-container button {
+    background-color: #081423;
+    color: #ffffff;
+    width: 200px;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    border: 2px solid #d64161;
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;
+}
+
+.form-container button:hover {
+    background-color: #d64161;
+}
+
+.form-container a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #d64161;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.form-container a:hover {
+    background-color: #ffffff;
+    color: #d64161;
+}
+
 table {
     margin: 0 auto;
     border-collapse: collapse;
@@ -221,7 +240,7 @@ tr:hover {
     border: none;
 }
 
-.delete-button{
+.delete-button {
     background-color: #d64161;
     color: #ffffff;
     padding: 3px;
@@ -235,6 +254,7 @@ tr:hover {
 .delete-button:hover {
     background-color: #cc0000;
 }
+
 th a {
     text-decoration: none;
     color: #ffffff;
@@ -244,6 +264,7 @@ th a {
 th a:hover {
     color: #d64161;
 }
+
 td a {
     text-decoration: none;
     color: #ffffff;
@@ -287,6 +308,7 @@ td a:hover {
 #submitButton:hover {
     background-color: #d64161;
 }
+
 .input-group input[type="range"] {
     -webkit-appearance: none;
     width: 100%;
@@ -307,42 +329,11 @@ td a:hover {
     border: 2px solid #1a304e;
     cursor: pointer;
 }
+
 .input-group input[type="range"]::-moz-range-thumb {
     width: 30px;
     height: 18px;
     background: #FFFFFF;
     border: 2px solid #1a304e;
     cursor: pointer;
-}
-.form-container button {
-    background-color: #081423;
-    color: #ffffff;
-    width: 200px;
-    padding: 15px 25px;
-    font-size: 1.2em;
-    border: 2px solid #d64161;
-    border-radius: 10px;
-    cursor: pointer;
-    display: block;
-    margin: 10px auto;
-}
-
-.form-container button:hover {
-    background-color: #d64161;
-}
-.form-container a {
-    display: block;
-    text-align: center;
-    margin-top: 15px;
-    padding: 10px 20px;
-    color: #ffffff;
-    background-color: #d64161;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.form-container a:hover {
-    background-color: #ffffff;
-    color: #d64161;
 }
